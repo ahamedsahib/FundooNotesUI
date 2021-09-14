@@ -14,9 +14,44 @@
     border: 1px solid #DADCE0;
     border-radius: 10px;
     
-    .registerContainer{
+    .loginContainer{
         display: flex;
-        width: 83%;
         flex-direction: column;
     }
 }
+mat-card-title{
+    font-size: 25px;
+    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+    margin-bottom: 15px;
+    color: #202124;
+}
+mat-form-field{
+    width: 100%;
+    mat-label{
+        font-size: 17px;
+    }
+}
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick{
+    color: #2E7FEA!important;
+}
+.formContainer{
+    div {
+     margin-top: 4%;
+     }
+ }
+
+ .buttonContainer{
+     display: flex;
+     justify-content: space-between;
+     padding-top: 12%;
+     .button{
+         background-color: #1A73E8;
+         color: #FFFFFF
+     }
+ }
+ .forgotPassword{
+     margin-top: -13px;
+     display: flex;
+     align-items: flex-start;
+     padding: 0;
+ }
