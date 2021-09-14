@@ -1,7 +1,7 @@
 <div class="container">
     <mat-card class="card">
         <div class="registerContainer">
-            <mat-card-title >
+            <mat-card-title>
                 <span style="color: #4285F4;">F</span>
                 <span style="color: #EA4335;">u</span>
                 <span style="color: #FBBC05;">n</span>
@@ -9,18 +9,47 @@
                 <span style="color: #34A853;">o</span>
                 <span style="color: #EB4E41;">o</span>
             </mat-card-title>
-            <mat-card-subtitle><h1> Create Your Fundoo Account</h1></mat-card-subtitle>
+            <mat-card-subtitle>
+                <h1> Create Your Fundoo Account</h1>
+            </mat-card-subtitle>
             <form class="formContainer">
                 <div class="name">
-                        <mat-form-field appearance="outline">
-                          <mat-label>FirstName</mat-label>
-                          <input matInput id="FirstName" >
-                        </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>FirstName</mat-label>
+                        <input matInput id="FirstName">
+                    </mat-form-field>
 
-                        <mat-form-field appearance="outline" style="margin-left: 15px;">
-                            <mat-label>Lastname</mat-label>
-                            <input matInput id="lastname" >
-                        </mat-form-field>
+                    <mat-form-field appearance="outline" style="margin-left: 15px;">
+                        <mat-label>Lastname</mat-label>
+                        <input matInput id="lastname">
+                    </mat-form-field>
+                </div>
+                <div >
+                    <mat-form-field appearance="outline" class="email">
+                        <mat-label>UserName</mat-label>
+                        <input matInput id='password'>
+                        <mat-hint style="font-size: small;">You can use letter, numbers and Periods</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="password">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput id="password">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" style="margin-left: 15px;">
+                        <mat-label>Confirm</mat-label>
+                        <input type="password" matInput id="confirmPassword">
+                    </mat-form-field>
+                    <mat-hint style="font-size: small; margin-top: -10px;">Use 8 or more characters with a mix of
+                        letters, numbers & symbols</mat-hint>
+                </div>
+                <div>
+                    <mat-checkbox id="showPassword" >Show Password</mat-checkbox>
+                </div>
+                <div class="buttonContainer">
+                  <button mat-button style="color: #1A73E8;">Sign in instead</button>
+                  <button mat-raised-button class="button" >Register</button>
                 </div>
             </form>
         </div>

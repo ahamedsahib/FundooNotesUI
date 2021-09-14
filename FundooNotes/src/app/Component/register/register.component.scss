@@ -2,16 +2,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 3%;
 }
 .card{
-    width: 70%;
+    width: 50%;
     display: flex;
     flex-direction: row;
     padding: 3%;
+    border: 1px solid #DADCE0;
+    border-radius: 10px;
     
     .registerContainer{
-        flex-grow: 2;
         display: flex;
+        width: 82%;
         flex-direction: column;
     }
     .imageContainer{
@@ -21,25 +24,48 @@
         align-items: center;
         p{
             font-family: 'Roboto', sans-serif;
-            font-size: 16px;
+            font-size: 18px;
         }
     }
 }
+$box-size: 10px;
 mat-card-title,mat-card-subtitle{
     font-size: 25px;
     font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
-    margin-bottom: 15px,
-}
-h1{
+    margin-bottom: 15px;
     color: #202124;
 }
-.name{
+.name,.password{
     display: flex;
     flex-flow: row wrap;
+    align-items: center;
     mat-form-field{
-        font-size: 12px;
+        font-size: $box-size;
+        input{
+            padding:3px;
+        }
     }
 }
-
+.email{
+    width: 98%;
+    font-size:  $box-size;
+}
+mat-label{
+    font-size: 15px;
+}
+.formContainer{
+   div {
+    margin-top: 4%;
+    }
+}
+.buttonContainer{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12%;
+    .button{
+        background-color: #1A73E8;
+        color: #FFFFFF
+    }
+}
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 

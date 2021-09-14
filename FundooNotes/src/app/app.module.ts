@@ -10,6 +10,8 @@ import { RegisterComponent } from './Component/register/register.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import {MatInputModule} from '@angular/material/input';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule,MatCardModule,MatFormFieldModule,MatInputModule
+    MatIconModule,MatCardModule,MatFormFieldModule,MatInputModule,MatCheckboxModule,MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
