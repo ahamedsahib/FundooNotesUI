@@ -21,7 +21,9 @@
                 <div class="password">
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input type="password" matInput id="password">
+                        <input matInput [type]="hide ? 'password' : 'text'">
+                       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon></button>
                     </mat-form-field>
                     <button mat-flat-button class="forgotPassword"style="color: #1A73E8;">Forgot Password?</button>
                 </div>
