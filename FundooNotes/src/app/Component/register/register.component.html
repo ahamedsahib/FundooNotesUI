@@ -17,32 +17,36 @@
                     <mat-form-field appearance="outline">
                         <mat-label>FirstName</mat-label>
                         <input matInput id="FirstName" formControlName="firstName">
+                        <mat-error *ngIf="RegisterForm.controls['firstName'].invalid">{{getErrorMessage("firstName")}}</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="lastname">
                         <mat-label>Lastname</mat-label>
                         <input matInput id="lastname" formControlName="lastName">
+                        <mat-error *ngIf="RegisterForm.controls['firstName'].invalid">{{getErrorMessage("lastName")}}</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="username">
                     <mat-form-field appearance="outline" class="email">
                         <mat-label>UserName</mat-label>
-                        <input matInput id='password'>
+                        <input matInput id='username' formControlName="email">
                         <mat-hint>You can use letter, numbers and Periods</mat-hint>
+                        <mat-error *ngIf="RegisterForm.controls['email'].invalid">{{getErrorMessage("email")}}</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="password">
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input [type]="hide ? 'password' : 'text'" matInput id="password">
+                        <input [type]="hide ? 'password' : 'text'" matInput id="password" formControlName="password">
+                        <mat-error *ngIf="RegisterForm.controls['password'].invalid">{{getErrorMessage("password")}}</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="confirm">
                         <mat-label>Confirm</mat-label>
                         <input [type]="hide ? 'password' : 'text'" matInput id="confirmPassword">
+                        <mat-error *ngIf="RegisterForm.controls['confirmPassword'].invalid">{{getErrorMessage("confirmPassword")}}</mat-error>
                     </mat-form-field>
-                    <mat-hint style="margin-top: -10px;">Use 8 or more characters with a mix of
-                        letters, numbers & symbols</mat-hint>
+                    <mat-hint style="margin-top: -10px;">Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
                 </div>
                 <div>
                     <mat-checkbox id="showPassword" (click)="password()">{{hide ? 'Hide Password' : 'Show Password'}}</mat-checkbox>
