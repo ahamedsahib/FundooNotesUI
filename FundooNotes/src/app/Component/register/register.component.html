@@ -37,19 +37,19 @@
                 <div class="password">
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input [type]="hide ? 'password' : 'text'" matInput id="password" formControlName="password">
+                        <input [type]="hide ? 'password' : 'text'" matInput id="password" formControlName="password" (click)="isVisible=false">
                         <mat-error *ngIf="RegisterForm.controls['password'].invalid">{{getErrorMessage("password")}}</mat-error>
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline" class="confirm">
+                    <mat-form-field appearance="outline" class="confirm" (click)="isVisible=false">
                         <mat-label>Confirm</mat-label>
-                        <input [type]="hide ? 'password' : 'text'" matInput id="confirmPassword">
-                        <mat-error *ngIf="RegisterForm.controls['confirmPassword'].invalid">{{getErrorMessage("confirmPassword")}}</mat-error>
+                        <input [type]="hide ? 'password' : 'text'" matInput id="confirmPassword"  formControlName="confirmPassword" pattern="{{ this.RegisterForm.value.password}}">
+                        <mat-error *ngIf="RegisterForm.controls['confirmPassword'].invalid" >Password doesn't match</mat-error>
                     </mat-form-field>
-                    <mat-hint style="margin-top: -10px;">Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
+                    <mat-hint style="margin-top: -10px; " [style.display]="isVisible? 'block':'none' ">Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
                 </div>
                 <div>
-                    <mat-checkbox id="showPassword" (click)="password()">{{hide ? 'Hide Password' : 'Show Password'}}</mat-checkbox>
+                    <mat-checkbox id="showPassword" (click)="ShowPassword()">{{hide ? 'Hide Password' : 'Show Password'}}</mat-checkbox>
                 </div>
                 <div class="buttonContainer">
                   <button [routerLink]="['/login']" mat-button style="color: #1A73E8;">Sign in instead</button>
