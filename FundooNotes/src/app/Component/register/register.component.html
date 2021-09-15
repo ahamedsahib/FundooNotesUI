@@ -12,16 +12,16 @@
             <mat-card-subtitle>
                 <h1> Create Your Fundoo Account</h1>
             </mat-card-subtitle>
-            <form class="formContainer">
+            <form class="formContainer" [formGroup]="RegisterForm">
                 <div class="name">
                     <mat-form-field appearance="outline">
                         <mat-label>FirstName</mat-label>
-                        <input matInput id="FirstName">
+                        <input matInput id="FirstName" formControlName="firstName">
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline" class="lastname" style="margin-left: 15px;">
+                    <mat-form-field appearance="outline" class="lastname">
                         <mat-label>Lastname</mat-label>
-                        <input matInput id="lastname">
+                        <input matInput id="lastname" formControlName="lastName">
                     </mat-form-field>
                 </div>
                 <div class="username">
@@ -34,21 +34,21 @@
                 <div class="password">
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input type="password" matInput id="password">
+                        <input [type]="hide ? 'password' : 'text'" matInput id="password">
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline" class="confirm" style="margin-left: 15px;">
+                    <mat-form-field appearance="outline" class="confirm">
                         <mat-label>Confirm</mat-label>
-                        <input type="password" matInput id="confirmPassword">
+                        <input [type]="hide ? 'password' : 'text'" matInput id="confirmPassword">
                     </mat-form-field>
                     <mat-hint style="margin-top: -10px;">Use 8 or more characters with a mix of
                         letters, numbers & symbols</mat-hint>
                 </div>
                 <div>
-                    <mat-checkbox id="showPassword" >Show Password</mat-checkbox>
+                    <mat-checkbox id="showPassword" (click)="password()">{{hide ? 'Hide Password' : 'Show Password'}}</mat-checkbox>
                 </div>
                 <div class="buttonContainer">
-                  <button mat-button style="color: #1A73E8;">Sign in instead</button>
+                  <button [routerLink]="['/login']" mat-button style="color: #1A73E8;">Sign in instead</button>
                   <button mat-raised-button class="button" >Register</button>
                 </div>
             </form>
