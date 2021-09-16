@@ -18,10 +18,10 @@ export class RegisterComponent implements OnInit {
 
   isVisible:boolean= true;
 
-  constructor(private userService:UserServiceService,
-     private snackBar:MatSnackBar ,private router:Router) {
-    
-   }
+  constructor(
+    private userService:UserServiceService,
+     private snackBar:MatSnackBar ,private router:Router
+     ) {}
 
     ngOnInit(): void {
       this.RegisterForm = new FormGroup({
@@ -32,7 +32,12 @@ export class RegisterComponent implements OnInit {
         confirmPassword:new FormControl('',[Validators.required])
       });
     }
-
+    
+    onSubmit() {
+      if (this.RegisterForm.valid) {
+        this.Register();
+      }
+    }
     ShowPassword()
     {
        this.hide = !this.hide;

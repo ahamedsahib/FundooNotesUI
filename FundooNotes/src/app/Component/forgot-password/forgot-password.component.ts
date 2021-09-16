@@ -5,42 +5,36 @@ import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/Service/UserService/user-service.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
 
-  LoginForm !: FormGroup;
-  hide = true;
+  ForgotPasswordForm !: FormGroup;
   constructor( private userService:UserServiceService,
     private snackBar:MatSnackBar ,private router:Router) {}
 
   ngOnInit(): void {
-    this.LoginForm = new FormGroup({
-      email: new FormControl('',[Validators.required,]),
-      password:new FormControl('',[Validators.required])
+    this.ForgotPasswordForm = new FormGroup({
+      email: new FormControl('',[Validators.required,])
     });
 }
 onSubmit() {
-  if (this.LoginForm.valid) {
-    this.login();
+  if (this.ForgotPasswordForm.valid) {
+    this.forgotPassword();
   }
 }
-  login(){
-    this.userService.Login(this.LoginForm.value).
+  forgotPassword(){
+    this.userService.ResetMail(this.ForgotPasswordForm.value).
         subscribe((status:any)=>
         {
           console.log(status);
           this.snackBar.open(`${status.message}`, '', {duration: 3000 ,verticalPosition: 'bottom', horizontalPosition: 'left' })
-          if(`${status.status == true}`)
-          this.router.navigate(['/register']);
       },
         error => {
           this.snackBar.open(`${error.error.message}`, '', {duration: 3000 ,verticalPosition: 'bottom', horizontalPosition: 'left' })
       });
   }
-  getErrorMessage(data:any=null){
-    return data;
-  }
+
 }

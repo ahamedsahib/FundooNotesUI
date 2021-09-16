@@ -20,4 +20,17 @@ export class UserServiceService {
       }
       return this.httpService.post(`${environment.baseUrl}/api/register`,params)
     }
+
+    Login(data:any){
+      const params={
+        Email :data.email,
+        Password : data.password,
+      }
+      return this.httpService.post(`${environment.baseUrl}/api/login`,params)
+    }
+    
+    ResetMail(data:any)
+    {
+      return this.httpService.post(`${environment.baseUrl}/api/forgotpassword?email=${data}`);
+    }
 }
