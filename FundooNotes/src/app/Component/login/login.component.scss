@@ -55,3 +55,22 @@ mat-form-field{
      align-items: flex-start;
      padding: 0;
  }
+ @media only screen and (max-width: 750px){
+    .card{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 0px;
+        height: auto;
+    }
+    .container{
+        padding-top: 5%;
+    }
+    mat-form-field{
+        width: 100%;
+    }
+    h1,h3,mat-card-title{
+        font-size: 18px;
+    }
+    
+ }

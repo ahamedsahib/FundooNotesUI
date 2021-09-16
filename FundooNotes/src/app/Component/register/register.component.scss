@@ -52,7 +52,7 @@ mat-hint{
     margin-right: 16px;
 }
 .email{
-    width: 96%;
+    width: 100%;
     font-size:  $box-size;
 }
 mat-form-field{
@@ -105,10 +105,17 @@ mat-error{
         margin-top: 0;
     }
     mat-form-field{
-        width: 100%;
+        width: 100%!important;
+    }
+    .email{
+        width: 95%!important;
+        font-size:  $box-size;
     }
     .password{
         margin-top: 16px!important;
+    }
+    .buttonContainer{
+      margin: 0;
     }
 }
 
