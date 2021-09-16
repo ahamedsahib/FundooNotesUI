@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserServiceService } from 'src/app/Service/UserService/user-service.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -11,27 +13,32 @@ export class RegisterComponent implements OnInit {
   RegisterForm !: FormGroup;
 
   // variable - default false
-  hide: boolean = false;
+  hide: boolean = true;
 
   isVisible:boolean= true;
 
-  constructor() { }
+  constructor(private userService:UserServiceService,
+     private snackBar:MatSnackBar) {
+    
+   }
 
     ngOnInit(): void {
       this.RegisterForm = new FormGroup({
         firstName: new FormControl('',[Validators.required,Validators.pattern('^[A-Z]{1}[a-zA-Z]{2,}'),Validators.minLength(3)]),
         lastName: new FormControl('',[Validators.required,Validators.pattern('^[A-Z]{1}[a-zA-Z]{2,}'),Validators.minLength(3)]),
         email: new FormControl('',[Validators.required, Validators.email]),
-        password:new FormControl('',[Validators.required, Validators.pattern('^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$'),Validators.minLength(8)]),
+        password:new FormControl('',[Validators.required, Validators.pattern('^.*(?=.{8,})(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$')]),
         confirmPassword:new FormControl('',[Validators.required])
       });
     }
-    ShowPassword() {
-      this.hide = !this.hide;
-  }
 
-  getErrorMessage(inputName:any)
-   {
+    ShowPassword()
+    {
+       this.hide = !this.hide;
+    }
+
+    getErrorMessage(inputName:string)
+    {
       let len = inputName=="password"? 8:3;
         if (this.RegisterForm.controls[`${inputName}`].hasError('required')) {
           return 'You must enter a value';
@@ -45,4 +52,14 @@ export class RegisterComponent implements OnInit {
         }
         return this.RegisterForm.controls[`${inputName}`].hasError('pattern') ? `${inputName} is invalid` : '';
     }
+
+    Register(){
+        this.userService.Register(this.RegisterForm.value).
+        subscribe((status:any)=>
+        {
+           // this.router.navigate(['/login']);
+            this.snackBar.open('Registration Successfull', '', {duration: 3000 ,verticalPosition: 'bottom', 
+            horizontalPosition: 'left' })
+        });
+  }
 }
