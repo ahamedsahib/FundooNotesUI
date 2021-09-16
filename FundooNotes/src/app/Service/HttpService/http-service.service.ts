@@ -13,4 +13,6 @@ export class HttpServiceService {
     console.log(url,data+"value");
     return this.http.post(url,data,isHeaderRequired && headers)
   }
+
+  
 }

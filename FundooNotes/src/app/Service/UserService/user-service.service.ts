@@ -7,7 +7,7 @@ import { HttpServiceService } from '../HttpService/http-service.service';
 })
 export class UserServiceService {
 
-  constructor(private httpService:HttpServiceService) {
+  constructor(private httpService:HttpServiceService ) {
     
    }
 
@@ -18,6 +18,6 @@ export class UserServiceService {
         Email :data.email,
         Password : data.password,
       }
-      return this.httpService.post(`${environment.baseUrl}/api/register`,params);
+      return this.httpService.post(`${environment.baseUrl}/api/register`,params)
     }
 }
