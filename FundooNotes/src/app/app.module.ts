@@ -18,13 +18,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ForgotPasswordComponent } from './Component/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './Component/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

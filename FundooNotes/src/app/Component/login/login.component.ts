@@ -40,7 +40,4 @@ onSubmit() {
           this.snackBar.open(`${error.error.message}`, '', {duration: 3000 ,verticalPosition: 'bottom', horizontalPosition: 'left' })
       });
   }
-  getErrorMessage(data:any=null){
-    return data;
-  }
 }

@@ -26,11 +26,15 @@ onSubmit() {
   }
 }
   forgotPassword(){
-    this.userService.ResetMail(this.ForgotPasswordForm.value).
+    this.userService.ResetMail(this.ForgotPasswordForm.value.email).
         subscribe((status:any)=>
         {
           console.log(status);
           this.snackBar.open(`${status.message}`, '', {duration: 3000 ,verticalPosition: 'bottom', horizontalPosition: 'left' })
+          if(`${status.status == true}`)
+          localStorage.setItem("Token",`${status.data}`);
+          localStorage.setItem("Username",`${this.ForgotPasswordForm.value.email}`);
+          this.router.navigate(['/resetPassword']);
       },
         error => {
           this.snackBar.open(`${error.error.message}`, '', {duration: 3000 ,verticalPosition: 'bottom', horizontalPosition: 'left' })
