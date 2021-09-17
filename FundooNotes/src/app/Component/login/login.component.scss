@@ -1,26 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+@mixin flex( $display, $alignitems, $justifycontent,$flexdirection ) { // Mixin with defaults
+    display:$display;
+    align-items: $alignitems;
+    justify-content: $justifycontent;
+    flex-direction: $flexdirection;
+  }
+
+@mixin fontSize($size){
+    font-size: $size;
+}
 .container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex($display:flex,$alignitems:center,$justifycontent:center,$flexdirection:row);
     margin-top: 3%;
 }
 .card{
     width: 30%;
-    display: flex;
-    flex-direction: column;
+    @include flex($display:flex,$alignitems:none,$justifycontent:none,$flexdirection:column);
     padding: 3%;
     text-align: center;
     border: 1px solid #DADCE0;
     border-radius: 10px;
     
     .loginContainer{
-        display: flex;
-        flex-direction: column;
+        @include flex($display:flex,$alignitems:none,$justifycontent:none,$flexdirection:column);
     }
 }
 mat-card-title{
-    font-size: 25px;
+    @include fontSize(25px);
     font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
     margin-bottom: 15px;
     color: #202124;
@@ -28,11 +35,11 @@ mat-card-title{
 mat-form-field{
     width: 100%;
     mat-label{
-        font-size: 17px;
+        @include fontSize(17px);
     }
 }
 mat-error{
-    font-size: 12px;
+    @include fontSize(12px);
 }
 ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick{
     color: #2E7FEA!important;
@@ -44,8 +51,7 @@ mat-error{
  }
 
  .buttonContainer{
-     display: flex;
-     justify-content: space-between;
+    @include flex($display:flex,$alignitems:none,$justifycontent:space-between,$flexdirection:row);
      padding-top: 12%;
      .button{
          background-color: #1A73E8;
@@ -54,8 +60,7 @@ mat-error{
  }
  .forgotPassword{
      margin-top: -13px;
-     display: flex;
-     align-items: flex-start;
+     @include flex($display:flex,$alignitems:none,$justifycontent:flex-start,$flexdirection:none);
      padding: 0;
  }
  @media only screen and (max-width: 750px){
