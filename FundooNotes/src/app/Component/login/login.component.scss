@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+@mixin flex( $display, $alignitems, $justifycontent,$flexdirection ) { // Mixin with defaults
+    display:$display;
+    align-items: $alignitems;
+    justify-content: $justifycontent;
+    flex-direction: $flexdirection;
+  }
+
+@mixin fontSize($size){
+    font-size: $size;
+}
+.container{
+    @include flex($display:flex,$alignitems:center,$justifycontent:center,$flexdirection:row);
+    margin-top: 3%;
+}
+.card{
+    width: 30%;
+    @include flex($display:flex,$alignitems:none,$justifycontent:none,$flexdirection:column);
+    padding: 3%;
+    text-align: center;
+    border: 1px solid #DADCE0;
+    border-radius: 10px;
+    
+    .loginContainer{
+        @include flex($display:flex,$alignitems:none,$justifycontent:none,$flexdirection:column);
+    }
+}
+mat-card-title{
+    @include fontSize(25px);
+    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+    margin-bottom: 15px;
+    color: #202124;
+}
+mat-form-field{
+    width: 100%;
+    mat-label{
+        @include fontSize(17px);
+    }
+}
+mat-error{
+    @include fontSize(12px);
+}
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick{
+    color: #2E7FEA!important;
+}
+.formContainer{
+    div {
+     margin-top: 4%;
+     }
+ }
+
+ .buttonContainer{
+    @include flex($display:flex,$alignitems:none,$justifycontent:space-between,$flexdirection:row);
+     padding-top: 12%;
+     .button{
+         background-color: #1A73E8;
+         color: #FFFFFF
+     }
+ }
+ .forgotPassword{
+     margin-top: -13px;
+     @include flex($display:flex,$alignitems:none,$justifycontent:flex-start,$flexdirection:none);
+     padding: 0;
+ }
+ @media only screen and (max-width: 750px){
+    .card{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 0px;
+        height: auto;
+    }
+    .container{
+        padding-top: 5%;
+    }
+    mat-form-field{
+        width: 100%;
+    }
+    h1,h3,mat-card-title{
+        font-size: 18px;
+    }
+    
+ }

@@ -1,0 +1,37 @@
+<div class="container">
+    <mat-card class="card">
+        <div class="loginContainer">
+            <mat-card-title>
+                <span style="color: #4285F4;">F</span>
+                <span style="color: #EA4335;">u</span>
+                <span style="color: #FBBC05;">n</span>
+                <span style="color: #4285F4;">d</span>
+                <span style="color: #34A853;">o</span>
+                <span style="color: #EB4E41;">o</span>
+            </mat-card-title>
+                <h1> Sign in</h1>
+                <h3>Use Your Fundoo Account</h3>
+            <form class="formContainer" [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+                <div class="email">
+                    <mat-form-field appearance="outline">
+                        <mat-label>UserName</mat-label>
+                        <input type="email" matInput id="email" formControlName="email" >
+                    </mat-form-field>
+                </div>
+                <div class="password">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" >
+                       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon></button>
+                    </mat-form-field>
+                    <button [routerLink]="['/forgetPassword']" mat-flat-button class="forgotPassword"style="color: #1A73E8;">Forgot Password?</button>
+                </div>
+                <div class="buttonContainer">
+                  <button [routerLink]="['/register']" mat-button style="color: #1A73E8;">Create account</button>
+                  <button type="submit" mat-raised-button class="button">Login</button>
+                </div>
+            </form>
+        </div>
+    </mat-card>
+</div>

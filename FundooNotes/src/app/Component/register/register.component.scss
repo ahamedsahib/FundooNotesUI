@@ -1,16 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+
+@mixin flex( $display, $alignitems, $justifycontent,$flexdirection ) { // Mixin with defaults
+    display:$display;
+    align-items: $alignitems;
+    justify-content: $justifycontent;
+    flex-direction: $flexdirection;
+  }
+@mixin fontSize($size){
+    font-size: $size;
+}
+
+$box-size: 8px;
+
 .container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex($display:flex,$alignitems:center,$justifycontent:center,$flexdirection:row);
+    margin-top: 3%;
 }
 .card{
-    width: 70%;
-    display: flex;
-    flex-direction: row;
+    width: 50%;
+    @include flex($display:flex,$alignitems:center,$justifycontent:center,$flexdirection:row);
+    padding: 3%;
+    border: 1px solid #DADCE0;
+    border-radius: 10px;
+    
     .registerContainer{
-        flex-grow: 2;
+        @include flex($display:flex,$alignitems:left,$justifycontent:none,$flexdirection:column);
+        width: 73%;
     }
     .imageContainer{
-        flex-grow: 1;
+        @include flex($display:flex,$alignitems:none,$justifycontent:center,$flexdirection:column);
+        p{
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            @include fontSize(18px);
+            
+        }
     }
 }
+
+mat-card-title,mat-card-subtitle{
+    @include fontSize(24px);
+    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+    margin-bottom: 15px;
+    font-weight: 400;
+    color: #202124;
+}
+mat-hint{
+    color: #5f6368;
+    @include fontSize(small);
+}
+.name,.password{
+    @include flex($display:flex,$alignitems:center,$justifycontent:space-between,$flexdirection:row);
+    flex-flow: row wrap;
+}
+.email{
+    width: 100%;
+    font-size:  $box-size;
+}
+mat-form-field{
+    font-size: $box-size;
+    input{
+        padding:3px;
+    }
+}
+mat-label{
+    @include fontSize(15px);
+}
+mat-error{
+    @include fontSize(12px);
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #1A73E8 !important;
+  }
+
+.formContainer{
+   div
+    {
+       margin-top: 4%;
+    }
+}
+.buttonContainer{
+    @include flex($display:flex,$alignitems:none,$justifycontent:space-between,$flexdirection:row);
+    padding-top: 12%;
+    .button
+    {
+        background-color: #1A73E8;
+        color: #FFFFFF
+    }
+}
+
+
+@media only screen and (max-width: 900px){
+    .imageContainer{
+        display: none !important;
+    }
+    .lastname,.confirm{
+        margin-left: 0px!important;
+    }
+    .card{
+        width: 100%;
+        border-radius: 0px;
+    }
+    .container{
+        margin-top: 0;
+    }
+    mat-form-field{
+        width: 100%!important;
+    }
+    .email{
+        width: 95%!important;
+        font-size: $box-size;
+    }
+    .password{
+        margin-top: 16px!important;
+    }
+    .buttonContainer{
+      margin: 0;
+    }
+}
+
+
+

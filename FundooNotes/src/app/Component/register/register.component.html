@@ -1,10 +1,65 @@
 <div class="container">
     <mat-card class="card">
         <div class="registerContainer">
-<p>hi</p>
+            <mat-card-title>
+                <span style="color: #4285F4;">F</span>
+                <span style="color: #EA4335;">u</span>
+                <span style="color: #FBBC05;">n</span>
+                <span style="color: #4285F4;">d</span>
+                <span style="color: #34A853;">o</span>
+                <span style="color: #EB4E41;">o</span>
+            </mat-card-title>
+            <mat-card-subtitle>
+                <h1> Create Your Fundoo Account</h1>
+            </mat-card-subtitle>
+            <form class="formContainer" [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+                <div class="name">
+                    <mat-form-field appearance="outline" >
+                        <mat-label>FirstName</mat-label>
+                        <input matInput id="FirstName" formControlName="firstName" >
+                        <mat-error *ngIf="RegisterForm.controls['firstName'].invalid">{{getErrorMessage("firstName")}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="lastname" >
+                        <mat-label>Lastname</mat-label>
+                        <input matInput id="lastname" formControlName="lastName" >
+                        <mat-error *ngIf="RegisterForm.controls['firstName'].invalid">{{getErrorMessage("lastName")}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="username">
+                    <mat-form-field appearance="outline" class="email" >
+                        <mat-label>UserName</mat-label>
+                        <input matInput id='username' formControlName="email" >
+                        <mat-hint>You can use letter, numbers and Periods</mat-hint>
+                        <mat-error *ngIf="RegisterForm.controls['email'].invalid">{{getErrorMessage("email")}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="password">
+                    <mat-form-field appearance="outline" (click)="isVisible=false" >
+                        <mat-label>Password</mat-label>
+                        <input [type]="hide ? 'password' : 'text'" matInput id="password" formControlName="password"  >
+                        <mat-error *ngIf="RegisterForm.controls['password'].invalid">{{getErrorMessage("password")}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="confirm" (click)="isVisible=false" >
+                        <mat-label>Confirm</mat-label>
+                        <input [type]="hide ? 'password' : 'text'" matInput id="confirmPassword"  formControlName="confirmPassword" pattern="{{ this.RegisterForm.value.password}}" >
+                        <mat-error *ngIf="RegisterForm.controls['confirmPassword'].invalid" >Password doesn't match</mat-error>
+                    </mat-form-field>
+                    <mat-hint style="margin-top: -10px; " [style.display]="isVisible? 'block':'none' ">Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
+                </div>
+                <div>
+                    <mat-checkbox id="showPassword" (click)="ShowPassword()">{{hide ? 'Show Password':'Hide Password'}}</mat-checkbox>
+                </div>
+                <div class="buttonContainer">
+                  <button [routerLink]="['/login']" mat-button style="color: #1A73E8;">Sign in instead</button>
+                  <button type="submit" mat-raised-button class="button">Register</button>
+                </div>
+            </form>
         </div>
         <div class="imageContainer">
-<p>welcomeee</p>
+            <img src="../../../assets/RegisterImage.svg">
+            <p>One account. All of Google working for you</p>
         </div>
     </mat-card>
 </div>
