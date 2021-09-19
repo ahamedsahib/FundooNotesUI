@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './Component/forgot-password/forgot-password.component';
 import { LoginComponent } from './Component/login/login.component';
+import { NewNoteComponent } from './Component/new-note/new-note.component';
 import { RegisterComponent } from './Component/register/register.component';
 import { ResetPasswordComponent } from './Component/reset-password/reset-password.component';
 
@@ -14,7 +15,8 @@ const routes: Routes =
   {path:'login', component:LoginComponent},
   {path:'forgetPassword',component:ForgotPasswordComponent},
   {path:`resetpassword/${token}`,component:ResetPasswordComponent},
-  {path:'home',component:DashboardComponent}
+  {path:'home',component:DashboardComponent},
+  {path:'newNote',component:NewNoteComponent}
 ];
 
 @NgModule({
