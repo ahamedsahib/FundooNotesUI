@@ -22,6 +22,9 @@ import { ResetPasswordComponent } from './Component/reset-password/reset-passwor
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import { NewNoteComponent } from './Component/new-note/new-note.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { AddNoteComponent } from './Component/add-note/add-note.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,9 @@ import {MatListModule} from '@angular/material/list';
     LoginComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    DashboardComponent
+    DashboardComponent,
+    NewNoteComponent,
+    AddNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,8 @@ import {MatListModule} from '@angular/material/list';
     HttpClientModule,
     MatSnackBarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,24 +4,19 @@
         <mat-icon class="menuicon" (click)="sidenav.toggle()">menu</mat-icon>
         </button>
         <img src="../../../assets/fundooIcon.png" class="image">
-    <mat-card-title style="margin-left: 5px;">
-        <span style="color: #4285F4;">F</span>
-        <span style="color: #EA4335;">u</span>
-        <span style="color: #FBBC05;">n</span>
-        <span style="color: #4285F4;">d</span>
-        <span style="color: #34A853;">o</span>
-        <span style="color: #EB4E41;">o</span>
+    <mat-card-title style="margin-left: 5px; padding-top:14px;">
+        <span style="color: #5F6368;font-weight:normal;;">Fundoo</span>
     </mat-card-title>
     </div>
     <div class="search">
-        <mat-form-field class="search" appearance="fill" [style.width.px]=500>
+        <mat-form-field class="search" appearance="fill" [style.width.px]=700>
             <input matInput placeholder="Search">
-            <mat-icon matPrefix style="margin-right: 10px;">search</mat-icon>
+            <mat-icon matPrefix style="margin: 0 10px;">search</mat-icon>
             </mat-form-field>
     </div>
     <div class="endIcons">
         <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-            <mat-icon>view_agenda</mat-icon>
+            <mat-icon  class="material-icons-outlined">view_agenda</mat-icon>
         </button>
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
             <mat-icon>supervised_user_circle</mat-icon>
@@ -53,5 +48,7 @@
               </mat-list-item>
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>Main content</mat-sidenav-content>
+    <mat-sidenav-content>
+        <div class="AddNote"><app-new-note></app-new-note></div>
+    </mat-sidenav-content>
 </mat-sidenav-container>
