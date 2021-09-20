@@ -57,3 +57,36 @@ mat-list-item:hover
     border-bottom-right-radius: 30px;
     border-top-right-radius: 30px;
 }
+::ng-deep.mat-menu-content:not(:empty) 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+ .profilePic{
+    height: 70px;
+    width: 30 !important;
+    border-radius: 32px;
+ }
+ ::ng-deep.mat-menu-panel {
+    width: 354px !important;
+    border-radius: 8px !important;
+}
+h1{
+    padding-top: 10px;
+    color: #202124;
+    font: 500 16px/22px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    letter-spacing: 0.29px;
+    margin: 0;
+}
+p{
+    color: #5f6368;
+    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    letter-spacing: normal;
+}
+mat-divider {
+    width: 100%;
+}

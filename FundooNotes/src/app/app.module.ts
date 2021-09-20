@@ -22,9 +22,12 @@ import { ResetPasswordComponent } from './Component/reset-password/reset-passwor
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
-import { NewNoteComponent } from './Component/new-note/new-note.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AddNoteComponent } from './Component/add-note/add-note.component';
+import {AutosizeModule} from 'ngx-autosize';
+import {MatMenuModule} from '@angular/material/menu';
+import { IconComponent } from './Component/icon/icon.component';
+import {MatDividerModule} from '@angular/material/divider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,11 +36,11 @@ import { AddNoteComponent } from './Component/add-note/add-note.component';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     DashboardComponent,
-    NewNoteComponent,
-    AddNoteComponent
+    AddNoteComponent,
+    IconComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -53,7 +56,10 @@ import { AddNoteComponent } from './Component/add-note/add-note.component';
     MatSnackBarModule,
     MatSidenavModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    AutosizeModule,
+    MatMenuModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
