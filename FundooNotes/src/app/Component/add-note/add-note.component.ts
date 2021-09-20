@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddNoteComponent implements OnInit {
  hide=true;
+ NoteForm !:FormGroup
   constructor() { }
 
   ngOnInit(): void {
+    this.NoteForm = new FormGroup({
+      title: new FormControl(),
+      description:new FormControl()
+    });
   }
 
 }

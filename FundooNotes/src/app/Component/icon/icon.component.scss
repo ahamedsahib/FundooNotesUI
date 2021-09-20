@@ -1,0 +1,19 @@
+.footericons {
+    display: flex !important;
+    flex-direction: row !important;
+    .icon{
+        display: flex;
+        justify-content: space-between;
+        flex-grow: 2;
+    }
+    .button{
+        display: flex;
+        justify-content: flex-end;
+        flex-grow: 2;
+        padding-right: 10px;
+        margin-bottom:-10px ;
+    }
+}
+    .mat-menu-panel{
+        width:50px;
+    }
