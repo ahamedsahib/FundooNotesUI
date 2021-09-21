@@ -15,14 +15,15 @@
         </mat-form-field>
     </div>
     <div class="endIcons">
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-            <mat-icon class="material-icons-outlined">view_agenda</mat-icon>
+        <button mat-icon-button class="example-icon favorite-icon" (click)="toggleView()">
+            <mat-icon *ngIf="list" class= "material-icons-outlined">view_agenda</mat-icon>
+            <mat-icon *ngIf="!list">view_module</mat-icon>
         </button>
         <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon>supervised_user_circle</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-            <img src="../../../assets/denis-harschi-umj2W38UOmc-unsplash.jpg" class="profilePic">
+        <mat-menu #menu="matMenu" style="padding-top: 20px;">
+            <img src="../../../assets/denis-harschi-umj2W38UOmc-unsplash.jpg" class="profilePic" >
             <h1 style="font-size: 14px;">Ahamed Sahib</h1>
             <p style="font-size: 14px;">adsahib39@gmailcom</p>
             <mat-divider style="margin-top: 20px;"></mat-divider>
@@ -32,7 +33,7 @@
     </div>
 </mat-toolbar>
 <mat-sidenav-container class="main">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="side_nav">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="side_nav" (mouseover)="opened=true">
         <mat-nav-list>
             <mat-list-item>
                 <mat-icon mat-list-icon class="sidenavLogo">lightbulb_outline</mat-icon>

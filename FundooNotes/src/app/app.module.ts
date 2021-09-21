@@ -28,6 +28,7 @@ import {AutosizeModule} from 'ngx-autosize';
 import {MatMenuModule} from '@angular/material/menu';
 import { IconComponent } from './Component/icon/icon.component';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatExpansionModule,
     AutosizeModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

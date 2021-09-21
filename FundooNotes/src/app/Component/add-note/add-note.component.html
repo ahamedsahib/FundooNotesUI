@@ -14,7 +14,10 @@
             <textarea cdkTextareaAutosize placeholder="Title" class="noteTitle" formControlName="title"></textarea>
         </mat-card-title>
         <mat-card-subtitle class="icon">
-            <mat-icon class="material-icons-outlined">push_pin</mat-icon>
+            <button mat-icon-button class="example-icon favorite-icon" (click)="pinNote()">
+                <mat-icon mat-list-icon class= "material-icons-outlined" style="color:#767676 ;" *ngIf="!pinned">push_pin</mat-icon>
+                <mat-icon mat-list-icon style="color:#767676 ;" *ngIf="pinned">push_pin</mat-icon>
+            </button>
         </mat-card-subtitle>
     </div>
     <div class="description" style="padding-top:10px ;">

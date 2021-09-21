@@ -14,6 +14,20 @@
         margin-bottom:-10px ;
     }
 }
-    .mat-menu-panel{
-        width:50px;
-    }
+::ng-deep .mat-menu-panel-1 {
+    width: 150px !important;
+    border-radius: 8px !important;
+}
+::ng-deep #mat-menu-panel-2 {
+    width: 150px !important;
+    border-radius: 8px !important;
+    min-height: auto;
+}
+button.mat-menu-item {
+    width: 100%;
+    height: 40px;
+}
+::ng-deep .mat-menu-content:not(:empty) {
+    padding-top: 0;
+     padding-bottom: 0; 
+}
