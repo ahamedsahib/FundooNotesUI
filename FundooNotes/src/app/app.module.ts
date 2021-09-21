@@ -29,6 +29,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { IconComponent } from './Component/icon/icon.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CollaboratorComponent } from './Component/collaborator/collaborator.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ResetPasswordComponent,
     DashboardComponent,
     AddNoteComponent,
-    IconComponent
+    IconComponent,
+    CollaboratorComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -61,7 +64,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AutosizeModule,
     MatMenuModule,
     MatDividerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

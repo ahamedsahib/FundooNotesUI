@@ -1,19 +1,19 @@
 <div class="footericons">
     <div class="icon">
         <button mat-icon-button class="example-icon favorite-icon">
-            <mat-icon mat-list-icon class="material-icons-outlined" [matMenuTriggerFor]="reminderMenu">add_alert</mat-icon>
+            <mat-icon mat-list-icon class="material-icons-outlined" [matMenuTriggerFor]="reminderMenu">add_alert
+            </mat-icon>
             <mat-menu #reminderMenu="matMenu" class="note_menu">
-                <div>Reminder:</div>
-                <button mat-menu-item>Later Today  ,8:00 PM</button>
-                <button mat-menu-item>Tommorow ,8:00 AM</button>
-                <button mat-menu-item>Next Week Mon,8:00 AM</button>
+                <button mat-menu-item [disabled]="true">Reminder</button>
+                <button mat-menu-item *ngFor="let rem of reminders;let i=index" (click)="addReminder(rem)"><span>{{rem.Text}}</span><span style="color:#9DBDE1">{{rem.Time}}</span></button>
             </mat-menu>
         </button>
         <button mat-icon-button class="example-icon favorite-icon">
-            <mat-icon mat-list-icon class="material-icons-outlined">person_add</mat-icon>
+            <mat-icon mat-list-icon class="material-icons-outlined" (click)="openDialog()">person_add</mat-icon>
         </button>
         <button mat-icon-button class="example-icon favorite-icon">
-            <mat-icon mat-list-icon class="material-icons-outlined">color_lens</mat-icon>
+            <mat-icon mat-list-icon class="material-icons-outlined" [matMenuTriggerFor]="colorPallete">color_lens
+            </mat-icon>
         </button>
         <button mat-icon-button class="example-icon favorite-icon">
             <mat-icon mat-list-icon class="material-icons-outlined">image</mat-icon>
@@ -21,9 +21,9 @@
         <button mat-icon-button class="example-icon favorite-icon">
             <mat-icon mat-list-icon class="material-icons-outlined">archive</mat-icon>
         </button>
-        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="menu">
+        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="Moremenu">
             <mat-icon mat-list-icon class="material-icons-outlined">more_vert</mat-icon>
-            <mat-menu #menu="matMenu" class="moreItems"> 
+            <mat-menu #Moremenu="matMenu" class="moreItems">
                 <button mat-menu-item>add Label</button>
                 <button mat-menu-item>add Label</button>
             </mat-menu>
@@ -38,4 +38,11 @@
     <div class="button">
         <button mat-button style="color: #1A73E8;" (click)="saveNote()">Close</button>
     </div>
+
 </div>
+<mat-menu #colorPallete="matMenu" class="colors" yPosition="above">
+    <span  class="colors" (click)="ChangeColor(colors[i].color)" [style.background-color]="colors[i].color"
+        matTooltip="{{colors[i].toolTip}}" *ngFor="let color of colors;let i=index">
+        <mat-icon mat-list-icon *ngIf="colors[i].icon">done</mat-icon>
+    </span>
+</mat-menu>

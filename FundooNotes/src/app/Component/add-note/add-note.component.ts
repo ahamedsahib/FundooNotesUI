@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-note',
@@ -10,7 +10,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AddNoteComponent implements OnInit {
  hide=true;
+ noteColor = "white";
  pinned=false;
+ isReminder=false;
+ Reminder="";
+ isClose=true;
  NoteForm !:FormGroup
   constructor(private snackBar:MatSnackBar) { }
 
@@ -29,6 +33,16 @@ export class AddNoteComponent implements OnInit {
       });
       this.pinned=!this.pinned;
     
+  }
+  
+  RemoveReminder()
+  {
+    this.isReminder=false;
+    this.snackBar.open('Reminder Deleted', '', {
+      duration: 2000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'left'
+    });  
   }
 
 }

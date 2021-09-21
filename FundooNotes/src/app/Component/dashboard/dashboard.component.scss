@@ -56,13 +56,13 @@ mat-list-item:hover
 }
 
 
-::ng-deep.mat-menu-content:not(:empty) 
+ ::ng-deep.ng-tns-c106-1 
 {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 1px solid #ccc;
     border-radius: 8px;
 }
  .profilePic{
