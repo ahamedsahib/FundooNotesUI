@@ -10,14 +10,26 @@ import { NoteServiceService } from 'src/app/Service/NoteService/note-service.ser
 export class GetNotesComponent implements OnInit {
   notes: any 
   constructor(private snackBar:MatSnackBar,private noteService:NoteServiceService) { }
-
+  showpinnedNotes=false;
   hovered=false;
   noteColor= "#fff";
   pinned = false;
   isReminder=false;
   Reminder="";
   ngOnInit(): void {
-    this.getAllNote();
+    
+    this.getAllNote();  
+    this.isPinnedNotes();
+  }
+
+  isPinnedNotes(){
+    for (var note of this.notes) {
+      if(note.pin==true)
+      {
+        this.showpinnedNotes=true;
+        break;
+      }
+    }
   }
 
   getAllNote(){
