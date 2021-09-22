@@ -10,7 +10,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class AddNoteComponent implements OnInit {
  hide=true;
- noteColor = "white";
+ noteColor = "#fff";
  pinned=false;
  isReminder=false;
  Reminder="";
@@ -20,8 +20,8 @@ export class AddNoteComponent implements OnInit {
 
   ngOnInit(): void {
     this.NoteForm = new FormGroup({
-      title: new FormControl(),
-      description:new FormControl()
+      Title: new FormControl(),
+      Description:new FormControl()
     });
   }
   pinNote()
@@ -34,7 +34,7 @@ export class AddNoteComponent implements OnInit {
       this.pinned=!this.pinned;
     
   }
-  
+
   RemoveReminder()
   {
     this.isReminder=false;

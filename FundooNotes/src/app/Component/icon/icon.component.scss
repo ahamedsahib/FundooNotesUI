@@ -14,13 +14,14 @@
         margin-bottom:-10px ;
     }
 }
-::ng-deep #mat-menu-panel-1 {
+::ng-deep .reminderBox {
     width: 250px !important;
     border-radius: 8px !important;
    
 }
-::ng-deep #mat-menu-panel-2 {
+::ng-deep .moreOption {
     width: 100px !important;
+    min-height: auto!important;
     border-radius: 8px !important;
 }
 button.mat-menu-item {
@@ -35,19 +36,18 @@ button.mat-menu-item {
     display: flex;
     justify-content: space-between;
 }
-::ng-deep #mat-menu-panel-3{
-    width:146px !important;
-    height: auto;
-}
-::ng-deep .ng-tns-c106-5{
+::ng-deep .colorbox{
     display: flex;
     flex-flow: row wrap;
+    width: 116px;
+    border-radius: 8px;
     padding: 5px;
+
 }
 .colors
 {
-    height: 20px;
-    width:20px;
+    height: 25px;
+    width:25px;
     border-radius: 50%;
     margin: 1px;
     border: 1px solid pink;

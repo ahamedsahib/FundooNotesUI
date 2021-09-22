@@ -11,7 +11,7 @@ import { CollaboratorComponent } from '../collaborator/collaborator.component';
   styleUrls: ['./icon.component.scss']
 })
 export class IconComponent implements OnInit {
-
+archive=false;
 hide=true;
   constructor(private addNote:AddNoteComponent,private noteService:NoteServiceService,private snackBar:MatSnackBar,public dialog: MatDialog) { }
 
@@ -97,7 +97,17 @@ hide=true;
   ];
 saveNote(){
   this.addNote.hide=true;
-  this.noteService.CreateNote(this.addNote.NoteForm.value)
+  let noteColor = this.addNote.noteColor ;
+  let reminder= this.addNote.isReminder==true?this.addNote.Reminder:"null";
+    const data = {
+      Title:this.addNote.NoteForm.value.Title,
+      Description:this.addNote.NoteForm.value.Description,
+      Colour:noteColor,
+      Reminder:reminder,
+      Pin:this.addNote.pinned,
+      Archive:this.archive
+    }
+  this.noteService.CreateNote(data)
     .subscribe((result:any)=>{
       this.snackBar.open(`${result.message}`, '', {
         duration: 3000,
@@ -113,7 +123,15 @@ saveNote(){
       });
   });
 }
-
+archiveNote()
+  {
+    this.snackBar.open(`${this.archive?'Note Unarchived':'Note Archived'}`, '', {
+        duration: 2000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+    this.archive=!this.archive;
+  }
 addReminder(rem:any)
   {
     this.addNote.isReminder=true;
@@ -135,4 +153,6 @@ addReminder(rem:any)
 
     this.dialog.open(CollaboratorComponent, dialogConfig);
   }
+
+
 }
