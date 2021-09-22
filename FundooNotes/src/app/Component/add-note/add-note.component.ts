@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
+@Injectable({ 
+  providedIn: 'root' 
+})
 @Component({
   selector: 'app-add-note',
   templateUrl: './add-note.component.html',
@@ -16,7 +18,8 @@ export class AddNoteComponent implements OnInit {
  Reminder="";
  isClose=true;
  NoteForm !:FormGroup
-  constructor(private snackBar:MatSnackBar) { }
+
+ constructor(private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.NoteForm = new FormGroup({

@@ -2,18 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService } from 'src/app/Service/NoteService/note-service.service';
-import { AddNoteComponent } from '../add-note/add-note.component';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import { GetNotesComponent } from '../get-notes/get-notes.component';
 
 @Component({
-  selector: 'app-icon',
-  templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss']
+  selector: 'app-noteicon',
+  templateUrl: './noteicon.component.html',
+  styleUrls: ['./noteicon.component.scss']
 })
-export class IconComponent implements OnInit {
-archive=false;
-hide=true;
-  constructor(private addNote:AddNoteComponent,private noteService:NoteServiceService,private snackBar:MatSnackBar,public dialog: MatDialog) { }
+export class NoteiconComponent implements OnInit {
+  
+  archive=false;
+  hide=true;
+  constructor(private getnote:GetNotesComponent,private noteService:NoteServiceService,private snackBar:MatSnackBar,public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -95,38 +96,38 @@ hide=true;
       "Time":"8:00 AM"
     }
   ];
-saveNote(){
-  this.addNote.hide=true;
-  let noteColor = this.addNote.noteColor ;
-  let reminder= this.addNote.isReminder==true?this.addNote.Reminder:"null";
-    const data = {
-      Title:this.addNote.NoteForm.value.Title,
-      Description:this.addNote.NoteForm.value.Description,
-      Colour:noteColor,
-      Reminder:reminder,
-      Pin:this.addNote.pinned,
-      Archive:this.archive
-    }
-  this.noteService.CreateNote(data)
-    .subscribe((result:any)=>{
-      this.snackBar.open(`${result.message}`, '', {
-        duration: 3000,
-        verticalPosition: 'bottom',
-        horizontalPosition: 'left'
-      });
-        this.addNote.noteColor="#fff";
-        this.archive=false;
-        this.addNote.Reminder="";
-        this.addNote.pinned = false;
-    },
-    error => {  
-      this.snackBar.open(`${error.error.message}`, '', {
-        duration: 3000,
-        verticalPosition: 'bottom',
-        horizontalPosition: 'left'
-      });
-  });
-}
+// saveNote(){
+//   this.getnote.hide=true;
+//   let noteColor = this.getnote.noteColor ;
+//   let reminder= this.getnote.isReminder==true?this.getnote.Reminder:"null";
+//     const data = {
+//       Title:this.getnote.NoteForm.value.Title,
+//       Description:this.getnote.NoteForm.value.Description,
+//       Colour:noteColor,
+//       Reminder:reminder,
+//       Pin:this.getnote.pinned,
+//       Archive:this.archive
+//     }
+//   this.noteService.CreateNote(data)
+//     .subscribe((result:any)=>{
+//       this.snackBar.open(`${result.message}`, '', {
+//         duration: 3000,
+//         verticalPosition: 'bottom',
+//         horizontalPosition: 'left'
+//       });
+//         this.getnote.noteColor="#fff";
+//         this.archive=false;
+//         this.getnote.Reminder="";
+//         this.getnote.pinned = false;
+//     },
+//     error => {  
+//       this.snackBar.open(`${error.error.message}`, '', {
+//         duration: 3000,
+//         verticalPosition: 'bottom',
+//         horizontalPosition: 'left'
+//       });
+//   });
+// }
 archiveNote()
   {
     this.snackBar.open(`${this.archive?'Note Unarchived':'Note Archived'}`, '', {
@@ -136,19 +137,20 @@ archiveNote()
       });
     this.archive=!this.archive;
   }
-addReminder(rem:any)
+
+  addReminder(rem:any)
   {
-    this.addNote.isReminder=true;
-    this.addNote.Reminder=`${rem.Text} ${rem.Time}`
+    this.getnote.isReminder=true;
+    this.getnote.Reminder=`${rem.Text} ${rem.Time}`
   }
 
   ChangeColor(color:any)
   {
-      this.addNote.noteColor = color;
+      this.getnote.noteColor = color;
       for (var colour of this.colors)
       colour.icon = colour.color==color?true:false;
   }
-
+  
   openDialog() 
   {
     const dialogConfig = new MatDialogConfig();
@@ -157,6 +159,4 @@ addReminder(rem:any)
 
     this.dialog.open(CollaboratorComponent, dialogConfig);
   }
-
-
 }

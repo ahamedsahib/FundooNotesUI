@@ -19,4 +19,8 @@ export class NoteServiceService {
     data.UserId= this.userDetails.userId;
     return this.httpService.post(`${environment.baseUrl}/api/notes`,data,true,this.headers);
   }
+  getNote(){
+    var userid = this.userDetails.userId;
+    return this.httpService.get(`${environment.baseUrl}/api/Note?userId=${userid}`,true,this.headers);
+  }
 }

@@ -1,7 +1,7 @@
-// ::ng-deep #cdk-overlay-0{
-//     border-radius: 10px;
+::ng-deep #cdk-overlay-0{
+    border-radius: 10px;
   
-// }
+}
 ::ng-deep .mat-dialog-container{
     padding:0 ;
     width: 600px;
@@ -51,7 +51,8 @@ h4{
     outline: none !important;
     border-color: white;
  }
- .end{
+ .end
+ {
      background-color: #EDEDED;
      display: flex;
      justify-content: flex-end;
@@ -59,4 +60,4 @@ h4{
      padding: 5px;
      margin-top: 6%;
      min-height:50px;
-    }
+}

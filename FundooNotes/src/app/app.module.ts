@@ -31,6 +31,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CollaboratorComponent } from './Component/collaborator/collaborator.component';
+import { GetNotesComponent } from './Component/get-notes/get-notes.component';
+import { NoteiconComponent } from './Component/noteicon/noteicon.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,9 @@ import { CollaboratorComponent } from './Component/collaborator/collaborator.com
     DashboardComponent,
     AddNoteComponent,
     IconComponent,
-    CollaboratorComponent
+    CollaboratorComponent,
+    GetNotesComponent,
+    NoteiconComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
