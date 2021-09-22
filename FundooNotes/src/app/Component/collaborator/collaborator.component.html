@@ -1,0 +1,30 @@
+<div class="mainCollab" style="padding: 20px;">
+<h2 mat-dialog-title>Collaborators</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content [formGroup]="CollaboratorForm">
+    <div class="collaborators">
+        <div class="user">
+            <img src="../../../assets/denis-harschi-umj2W38UOmc-unsplash.jpg" class="profilePic">
+            <div class="UserName">
+                <h4 style="height:6px">Ahamed Sahib <span style="font-style: italic;font-weight: lighter;" >(Owner)</span></h4>
+                <p style="font-size: 13px;">adsahib39@gmailcom</p>
+            </div>
+        </div>
+        <div class="user">
+            <span class="add">
+                <mat-icon class="addperson" >
+                    person_add</mat-icon>
+            </span>
+                <input  placeholder="Person or email to share with" formControlName="email" class="person">
+        </div>
+    </div>
+</mat-dialog-content>
+</div>
+<div class="footer">
+<mat-dialog-actions >
+    <div class="end" >
+        <button mat-button style="color: #454545;height: fit-content;" (click)="close()">Cancel</button>
+        <button  mat-button style="color: #454545;height: fit-content;">Save</button>
+    </div>
+</mat-dialog-actions>
+</div>

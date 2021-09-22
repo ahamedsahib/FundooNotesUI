@@ -34,7 +34,9 @@ onSubmit() {
           console.log(status);
           this.snackBar.open(`${status.message}`, '', {duration: 3000 ,verticalPosition: 'bottom', horizontalPosition: 'left' })
           if(`${status.status == true}`)
-          this.router.navigate(['/register']);
+          localStorage.setItem("token",status.tokenString);
+          localStorage.setItem('userDetails',JSON.stringify(status.userData));
+          this.router.navigate(['/home']);
       },
         error => {
           this.snackBar.open(`${error.error.message}`, '', {duration: 3000 ,verticalPosition: 'bottom', horizontalPosition: 'left' })
