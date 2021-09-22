@@ -1,7 +1,7 @@
 <div class="Notes">
-    <div class="getAllNotes">
+    <div class="getAllNotes" *ngFor="let note of notes;let i=index">
         <mat-card (mouseenter)="hovered=true" (mouseleave)="hovered=false" class="getNoteCard"
-            [style.background-color]="note.color" *ngFor="let note of notes;let i=index">
+            [style.background-color]="note.color" >
             <div>
                 <mat-card-title>
                     <div class="card_title">
