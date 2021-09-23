@@ -98,7 +98,7 @@ hide=true;
 saveNote(){
   this.addNote.hide=true;
   let noteColor = this.addNote.noteColor ;
-  let reminder= this.addNote.isReminder==true?this.addNote.Reminder:"null";
+  let reminder= this.addNote.isReminder==true?this.addNote.Reminder:null;
     const data = {
       Title:this.addNote.NoteForm.value.Title,
       Description:this.addNote.NoteForm.value.Description,

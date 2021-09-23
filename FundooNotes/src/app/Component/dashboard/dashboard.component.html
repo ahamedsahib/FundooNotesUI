@@ -22,13 +22,15 @@
         <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon>supervised_user_circle</mat-icon>
         </button>
-        <mat-menu #menu="matMenu" style="padding-top: 20px;">
+        <mat-menu #menu="matMenu">
+            <div class="userProfile">
             <img src="../../../assets/denis-harschi-umj2W38UOmc-unsplash.jpg" class="profilePic">
             <h1 style="font-size: 14px;">Ahamed Sahib</h1>
             <p style="font-size: 14px;">adsahib39@gmailcom</p>
-            <mat-divider style="margin-top: 20px;"></mat-divider>
-            <button mat-stroked-button style="margin:10px 0;width: 50px;">Sign out</button>
-            <mat-divider></mat-divider>
+            <mat-divider style="margin: 10px;"></mat-divider>
+            <button mat-stroked-button style="width: fit-content; margin-bottom: 4px;" click="signout()">Sign out</button>
+            <mat-divider a></mat-divider>
+        </div>
         </mat-menu>
     </div>
 </mat-toolbar>
@@ -42,6 +44,10 @@
             <mat-list-item>
                 <mat-icon mat-list-icon class="sidenavLogo">notifications_none</mat-icon>
                 <h4 mat-line>Reminders</h4>
+            </mat-list-item>
+            <mat-list-item *ngFor="let label of labels;">
+                <mat-icon mat-list-icon >label_outline</mat-icon>
+                <h4 mat-line>{{label}}</h4>
             </mat-list-item>
             <mat-list-item>
                 <mat-icon mat-list-icon class="sidenavLogo material-icons-outlined">edit_outline</mat-icon>

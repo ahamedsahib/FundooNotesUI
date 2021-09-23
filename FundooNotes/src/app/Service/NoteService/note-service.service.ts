@@ -23,4 +23,8 @@ export class NoteServiceService {
     var userid = this.userDetails.userId;
     return this.httpService.get(`${environment.baseUrl}/api/Note?userId=${userid}`,true,this.headers);
   }
+  getLabel(){
+    var userid = this.userDetails.userId;
+    return this.httpService.get(`${environment.baseUrl}/api/Label?userId=${userid}`,true,this.headers);
+  }
 }

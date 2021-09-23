@@ -1,14 +1,25 @@
 .getAllNotes{
-     margin-left: 5px;
+     margin-left: 5px; 
+     border-radius: 10px;
 }
-
+.notewrap{
+    display: flex;
+    flex-flow:row wrap ; 
+}
 .Notes{
     display: flex;
-    flex-flow: row wrap;
-    
+    flex-flow: column wrap; 
      margin-left: 80px;
      margin-right: 10px;
      margin-top: 50px;
+     p{
+        color: #5f6368;
+        letter-spacing: .07272727em;
+        font-family: Roboto,Arial,sans-serif;
+        font-size: .6875rem;
+        font-weight: 500;
+        line-height: 1rem;
+    }
  }
 ::ng-deep .getNoteCard
 {
@@ -16,7 +27,6 @@
     flex-direction: column;
     width:200px;
     align-items: center;
-    border-radius: 16px;
     margin-top: 25px;
     margin-left: 3px;
     padding-bottom:0 !important ;
