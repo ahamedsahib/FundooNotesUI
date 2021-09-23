@@ -37,15 +37,15 @@
 <mat-sidenav-container class="main">
     <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="side_nav" (mouseover)="opened=true">
         <mat-nav-list>
-            <mat-list-item>
+            <mat-list-item (click)="getnotes='Notes'">
                 <mat-icon mat-list-icon class="sidenavLogo">lightbulb_outline</mat-icon>
                 <h4 mat-line>Notes</h4>
             </mat-list-item>
-            <mat-list-item>
+            <mat-list-item (click)="getnotes='Reminders'">
                 <mat-icon mat-list-icon class="sidenavLogo">notifications_none</mat-icon>
                 <h4 mat-line>Reminders</h4>
             </mat-list-item>
-            <mat-list-item *ngFor="let label of labels;">
+            <mat-list-item *ngFor="let label of labels;" (click)="getnotes='Labels'">
                 <mat-icon mat-list-icon >label_outline</mat-icon>
                 <h4 mat-line>{{label}}</h4>
             </mat-list-item>
@@ -53,22 +53,25 @@
                 <mat-icon mat-list-icon class="sidenavLogo material-icons-outlined">edit_outline</mat-icon>
                 <h4 mat-line>Edit labels</h4>
             </mat-list-item>
-            <mat-list-item>
+            <mat-list-item (click)="getnotes='Archive'">
                 <mat-icon mat-list-icon class="sidenavLogo material-icons-outlined">archive</mat-icon>
                 <h4 mat-line>Archive</h4>
             </mat-list-item>
-            <mat-list-item>
+            <mat-list-item (click)="getnotes='Trash'">
                 <mat-icon mat-list-icon class="sidenavLogo material-icons-outlined">delete</mat-icon>
                 <h4 mat-line>Trash</h4>
             </mat-list-item>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div class="maincontent">
+        <div class="maincontent"  *ngIf="getnotes=='Notes' || getnotes=='Reminders'">
             <app-add-note></app-add-note>
         </div>
         <div class="notes">
-            <app-get-notes></app-get-notes>
+            <app-get-notes *ngIf="getnotes=='Notes'"></app-get-notes>
+            <app-get-archive-notes *ngIf="getnotes=='Archive'"></app-get-archive-notes>
+            <app-get-reminder *ngIf="getnotes=='Reminders'"></app-get-reminder>
+            <app-get-trash *ngIf="getnotes=='Trash'"></app-get-trash>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

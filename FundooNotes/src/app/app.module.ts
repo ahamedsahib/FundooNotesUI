@@ -33,6 +33,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { CollaboratorComponent } from './Component/collaborator/collaborator.component';
 import { GetNotesComponent } from './Component/get-notes/get-notes.component';
 import { NoteiconComponent } from './Component/noteicon/noteicon.component';
+import { GetArchiveNotesComponent } from './Component/get-archive-notes/get-archive-notes.component';
+import { GetReminderComponent } from './Component/get-reminder/get-reminder.component';
+import { GetTrashComponent } from './Component/get-trash/get-trash.component';
+import { UpdateNoteComponent } from './Component/update-note/update-note.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +49,11 @@ import { NoteiconComponent } from './Component/noteicon/noteicon.component';
     IconComponent,
     CollaboratorComponent,
     GetNotesComponent,
-    NoteiconComponent
+    NoteiconComponent,
+    GetArchiveNotesComponent,
+    GetReminderComponent,
+    GetTrashComponent,
+    UpdateNoteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

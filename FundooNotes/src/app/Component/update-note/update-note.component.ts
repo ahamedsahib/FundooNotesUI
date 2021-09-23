@@ -1,18 +1,14 @@
-import { Component, Injectable, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-@Injectable({ 
-  providedIn: 'root' 
-})
-
 @Component({
-  selector: 'app-add-note',
-  templateUrl: './add-note.component.html',
-  styleUrls: ['./add-note.component.scss']
+  selector: 'app-update-note',
+  templateUrl: './update-note.component.html',
+  styleUrls: ['./update-note.component.scss']
 })
+export class UpdateNoteComponent implements OnInit {
 
-export class AddNoteComponent implements OnInit {
  hide=true;
  noteColor = "#fff";
  pinned=false;
@@ -36,10 +32,8 @@ export class AddNoteComponent implements OnInit {
         verticalPosition: 'bottom',
         horizontalPosition: 'left'
       });
-      this.pinned=!this.pinned;
-    
+      this.pinned=!this.pinned; 
   }
-
   RemoveReminder()
   {
     this.isReminder=false;
@@ -49,5 +43,5 @@ export class AddNoteComponent implements OnInit {
       horizontalPosition: 'left'
     });  
   }
-
 }
+

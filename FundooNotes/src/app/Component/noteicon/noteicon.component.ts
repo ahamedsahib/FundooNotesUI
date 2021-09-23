@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService } from 'src/app/Service/NoteService/note-service.service';
@@ -14,7 +14,10 @@ export class NoteiconComponent implements OnInit {
   
   archive=false;
   hide=true;
+  Reminder:any
   constructor(private getnote:GetNotesComponent,private noteService:NoteServiceService,private snackBar:MatSnackBar,public dialog: MatDialog) { }
+  
+  @Input() note:any;
 
   ngOnInit(): void {
   }
@@ -96,61 +99,38 @@ export class NoteiconComponent implements OnInit {
       "Time":"8:00 AM"
     }
   ];
-// saveNote(){
-//   this.getnote.hide=true;
-//   let noteColor = this.getnote.noteColor ;
-//   let reminder= this.getnote.isReminder==true?this.getnote.Reminder:"null";
-//     const data = {
-//       Title:this.getnote.NoteForm.value.Title,
-//       Description:this.getnote.NoteForm.value.Description,
-//       Colour:noteColor,
-//       Reminder:reminder,
-//       Pin:this.getnote.pinned,
-//       Archive:this.archive
-//     }
-//   this.noteService.CreateNote(data)
-//     .subscribe((result:any)=>{
-//       this.snackBar.open(`${result.message}`, '', {
-//         duration: 3000,
-//         verticalPosition: 'bottom',
-//         horizontalPosition: 'left'
-//       });
-//         this.getnote.noteColor="#fff";
-//         this.archive=false;
-//         this.getnote.Reminder="";
-//         this.getnote.pinned = false;
-//     },
-//     error => {  
-//       this.snackBar.open(`${error.error.message}`, '', {
-//         duration: 3000,
-//         verticalPosition: 'bottom',
-//         horizontalPosition: 'left'
-//       });
-//   });
-// }
+
 archiveNote()
   {
-    this.snackBar.open(`${this.archive?'Note Unarchived':'Note Archived'}`, '', {
-        duration: 2000,
-        verticalPosition: 'bottom',
-        horizontalPosition: 'left'
+      this.noteService.Archive(this.note.noteId).subscribe(
+        (result: any) => {
+          this.snackBar.open(`${result.message}`, '', {duration: 3000 ,verticalPosition: 'bottom', horizontalPosition: 'left' })      
       });
-    this.archive=!this.archive;
   }
-
+DeleteNote(){
+  this.noteService.ToTrash(this.note.noteId).subscribe(
+    (result: any) => {
+      console.log(result);
+  });
+}
   addReminder(rem:any)
   {
     this.getnote.isReminder=true;
-    this.getnote.Reminder=`${rem.Text} ${rem.Time}`
+    this.Reminder=`${rem.Text} ${rem.Time}`
+    this.noteService.AddReminder(this.note.noteId,this.Reminder).subscribe(
+      (result: any) => {
+        console.log(result);
+    });
   }
 
   ChangeColor(color:any)
   {
-      this.getnote.noteColor = color;
-      for (var colour of this.colors)
-      colour.icon = colour.color==color?true:false;
+    this.noteService.ChangeNoteColor(this.note.noteId,color).subscribe(
+      (result: any) => {
+        console.log(result);
+    });
   }
-  
+
   openDialog() 
   {
     const dialogConfig = new MatDialogConfig();

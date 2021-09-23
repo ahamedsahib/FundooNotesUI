@@ -11,6 +11,7 @@ import { NoteServiceService } from 'src/app/Service/NoteService/note-service.ser
 export class DashboardComponent implements OnInit {
   list: boolean = true;
   labels:any
+  getnotes='Notes';
   toggleView()
   {
     this.list = !this.list;

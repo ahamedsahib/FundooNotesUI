@@ -1,32 +1,29 @@
-import { Component, Injectable, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService } from 'src/app/Service/NoteService/note-service.service';
-import { UpdateNoteComponent } from '../update-note/update-note.component';
-@Injectable({ 
-  providedIn: 'root' 
-})
+
 @Component({
-  selector: 'app-get-notes',
-  templateUrl: './get-notes.component.html',
-  styleUrls: ['./get-notes.component.scss']
+  selector: 'app-get-archive-notes',
+  templateUrl: './get-archive-notes.component.html',
+  styleUrls: ['./get-archive-notes.component.scss']
 })
-export class GetNotesComponent implements OnInit {
-  notes: any 
-  constructor(private snackBar:MatSnackBar,private noteService:NoteServiceService,public dialog: MatDialog
-    ) { }
+export class GetArchiveNotesComponent implements OnInit {
+
   showpinnedNotes:any
   hovered=false;
+  notes: any 
   noteColor= "#fff";
   pinned = false;
   isReminder=false;
   Reminder="";
+  constructor(private snackBar:MatSnackBar,private noteService:NoteServiceService) { }
+  
   ngOnInit(): void {
     this.getAllNote();
   }
   
    getAllNote(){
-      this.noteService.getNote()
+      this.noteService.getArchiveNote()
         .subscribe((result:any)=>{
           this.notes=result.data;
           console.log(this.notes);
@@ -53,26 +50,23 @@ export class GetNotesComponent implements OnInit {
       });
     }
     
-  pinNote(note:any)
+  pinNote()
   {
-    this.noteService.Pin(note.noteId).subscribe(
-      (result: any) => {
-        console.log(result);
-    });
+    this.snackBar.open(`${this.pinned?'Note unpinned':'Note Pinned'}`, '', {
+        duration: 2000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+      this.pinned=!this.pinned;
+    
   }
-  RemoveReminder(note:any)
+  RemoveReminder()
   {
-    this.noteService.UnsetReminder(note.noteId).subscribe(
-      (result: any) => {
-        console.log(result);
+    this.isReminder = false;
+    this.snackBar.open('Reminder Deleted', '', {
+      duration: 2000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'left'
     });
-  }
-  openDialog(note:any)
-  {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    this.dialog.open(UpdateNoteComponent,dialogConfig);
   }
 }
-

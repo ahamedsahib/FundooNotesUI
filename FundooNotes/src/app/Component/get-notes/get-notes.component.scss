@@ -5,8 +5,9 @@
 .notewrap{
     display: flex;
     flex-flow:row wrap ; 
+    margin-top: -10px
 }
-.Notes{
+::ng-deep.Notes{
     display: flex;
     flex-flow: column wrap; 
      margin-left: 80px;
@@ -33,7 +34,7 @@
     border: 1px solid #E0E0E0 ;
 }
 
-.card_title
+::ng-deep.card_title
 {
     display: flex;
     flex-direction: row;
@@ -66,3 +67,11 @@
 {
     cursor: pointer;
 }
+
+::ng-deep.noteDescription
+  { 
+    overflow: hidden !important;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+   }
+
