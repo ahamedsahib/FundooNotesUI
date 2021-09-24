@@ -11,6 +11,7 @@ import { NoteServiceService } from 'src/app/Service/NoteService/note-service.ser
 export class DashboardComponent implements OnInit {
   list: boolean = true;
   labels:any
+  Userdetails:any
   getnotes='Notes';
   toggleView()
   {
@@ -21,6 +22,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllLabels();
+    this.Userdetails= JSON.parse(localStorage.getItem('userDetails')!);
   }
   getAllLabels(){
     this.noteService.getLabel()
@@ -41,8 +43,7 @@ export class DashboardComponent implements OnInit {
     });
   }
   signout(){
-    localStorage.removeItem("token");
-    localStorage.removeItem("userDetails");
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
 }

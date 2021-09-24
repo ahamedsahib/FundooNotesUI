@@ -80,6 +80,19 @@ export class NoteServiceService {
   {
     var userid = this.userDetails.userId;
     return this.httpService.delete(`${environment.baseUrl}/api/emptyTrash?userId=${userid}`,true,this.headers);
+  }  
+  AddCollaborator(data:any)
+  {
+    console.log(data);
+    return this.httpService.post(`${environment.baseUrl}/api/Collaborator`,data,true,this.headers);
   }
-  
+  GetCollaborators(id:any)
+  {
+    return this.httpService.get(`${environment.baseUrl}/api/Collaborator?noteId=${id}`,true,this.headers);
+  }
+  RemoveCollaborator(cId:any,nId:any)
+  {
+    let params = new HttpParams().set('collaboratorId',cId).set('noteId',nId);
+    return this.httpService.delete(`${environment.baseUrl}/api/Collaborator`,params,true,this.headers);
+  }
 }

@@ -25,8 +25,8 @@
         <mat-menu #menu="matMenu">
             <div class="userProfile">
             <img src="../../../assets/denis-harschi-umj2W38UOmc-unsplash.jpg" class="profilePic">
-            <h1 style="font-size: 14px;">Ahamed Sahib</h1>
-            <p style="font-size: 14px;">adsahib39@gmailcom</p>
+            <h1 style="font-size: 14px;">{{Userdetails.firstName}} {{Userdetails.lastName}}</h1>
+            <p style="font-size: 14px;">{{Userdetails.email}}</p>
             <mat-divider style="margin: 10px;"></mat-divider>
             <button mat-stroked-button style="width: fit-content; margin-bottom: 4px;" click="signout()">Sign out</button>
             <mat-divider a></mat-divider>
@@ -45,7 +45,7 @@
                 <mat-icon mat-list-icon class="sidenavLogo">notifications_none</mat-icon>
                 <h4 mat-line>Reminders</h4>
             </mat-list-item>
-            <mat-list-item *ngFor="let label of labels;" (click)="getnotes='Labels'">
+            <mat-list-item *ngFor="let label of labels;" (click)="getnotes='label'">
                 <mat-icon mat-list-icon >label_outline</mat-icon>
                 <h4 mat-line>{{label}}</h4>
             </mat-list-item>

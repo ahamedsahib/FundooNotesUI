@@ -58,8 +58,7 @@ export class NoteiconComponent implements OnInit {
       "color": "#CBF0F8",
       "toolTip":"Blue",
       "icon":false
-    }
-,
+    },
     {
       "color": "#AECBFA",
       "toolTip":"Dark Blue",
@@ -87,31 +86,34 @@ export class NoteiconComponent implements OnInit {
   ];
 
   reminders: any[] = [
-    {
-      "Text": "Later Today",
-      "Time":"8:00 PM"
-    },
-    {
-      "Text": "Tommorow",
-      "Time":"8:00 AM"
-    },
-    {
-      "Text": "Next Week",
-      "Time":"8:00 AM"
-    }
-  ];
-
-archiveNote()
   {
-      this.noteService.Archive(this.note.noteId).subscribe(
+    "Text": "Later Today",
+    "Time":"8:00 PM"
+  },
+  {
+    "Text": "Tommorow",
+    "Time":"8:00 AM"
+  },
+  {
+    "Text": "Next Week",
+    "Time":"8:00 AM"
+  }
+];
+
+  archiveNote()
+  {
+    this.noteService.Archive(this.note.noteId).subscribe(
         (result: any) => {
           this.snackBar.open(`${result.message}`, '', {duration: 3000 ,verticalPosition: 'bottom', horizontalPosition: 'left' })      
       });
-      this.datasharing.changeMessage(true);
+    this.datasharing.changeMessage(true);
   }
-DeleteNote(){
+
+  DeleteNote()
+  {
   this.noteService.ToTrash(this.note.noteId).subscribe(
-    (result: any) => {
+    (result: any) => 
+    {
       console.log(result);
   });
   this.datasharing.changeMessage(true);
@@ -136,12 +138,12 @@ DeleteNote(){
     this.datasharing.changeMessage(true);
   }
 
-  openDialog( ) 
+  openDialog() 
   {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    this.dialog.open(CollaboratorComponent, dialogConfig);
+    this.dialog.open(CollaboratorComponent,{data: this.note} );
   }
 }

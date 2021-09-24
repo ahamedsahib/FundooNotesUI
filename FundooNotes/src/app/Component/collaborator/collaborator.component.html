@@ -10,12 +10,22 @@
                 <p style="font-size: 13px;">adsahib39@gmailcom</p>
             </div>
         </div>
-        <div class="user">
+        <div class="user" *ngFor="let user of collaborators" >
+            <span class="add" >
+                <mat-icon class="addperson" >
+                    person_outline</mat-icon>
+            </span>
+            <p style="font-size: 13px;" class="person" style="width: 500px;">user.CollaboratorEmailId</p>
+            <mat-icon class="collabButton">close</mat-icon>
+        </div>
+      
+        <div class="user" style="margin-top:10px ;">
             <span class="add">
                 <mat-icon class="addperson" >
                     person_add</mat-icon>
             </span>
                 <input  placeholder="Person or email to share with" formControlName="email" class="person">
+                <mat-icon *ngIf="CollaboratorForm.valid" class="collabButton" (click)="addCollaborator()">done</mat-icon>
         </div>
     </div>
 </mat-dialog-content>

@@ -1,6 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { json } from 'express';
 import { DataserviceService } from 'src/app/Service/Datasharing/dataservice.service';
 import { NoteServiceService } from 'src/app/Service/NoteService/note-service.service';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
@@ -22,8 +23,10 @@ export class GetNotesComponent implements OnInit {
   pinned = false;
   isReminder=false;
   Reminder="";
+  
   ngOnInit(): void {
     this.getAllNote();
+   
     this.datasharing.currentMessage.subscribe((change)=>{
       if(change == true){
         this.getAllNote();
@@ -31,7 +34,6 @@ export class GetNotesComponent implements OnInit {
       }
     });
   }
-  
    getAllNote(){
       this.noteService.getNote()
         .subscribe((result:any)=>{
