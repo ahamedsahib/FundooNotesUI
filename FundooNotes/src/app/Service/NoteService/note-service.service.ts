@@ -70,7 +70,16 @@ export class NoteServiceService {
   }
   DeleteForever(id:any)
   {
-    let params = new HttpParams().set('noteId',id);
     return this.httpService.delete(`${environment.baseUrl}/api/note?noteId=${id}`,true,this.headers);
   }
+  UpdateNote(data:any)
+  {
+    return this.httpService.put(`${environment.baseUrl}/api/Note`,data,true,this.headers);
+  }
+  EmptyTrash()
+  {
+    var userid = this.userDetails.userId;
+    return this.httpService.delete(`${environment.baseUrl}/api/emptyTrash?userId=${userid}`,true,this.headers);
+  }
+  
 }

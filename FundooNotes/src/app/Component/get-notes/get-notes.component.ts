@@ -1,6 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataserviceService } from 'src/app/Service/Datasharing/dataservice.service';
 import { NoteServiceService } from 'src/app/Service/NoteService/note-service.service';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 @Injectable({ 
@@ -13,7 +14,7 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
 })
 export class GetNotesComponent implements OnInit {
   notes: any 
-  constructor(private snackBar:MatSnackBar,private noteService:NoteServiceService,public dialog: MatDialog
+  constructor(private snackBar:MatSnackBar,private noteService:NoteServiceService,public dialog: MatDialog,private datasharing:DataserviceService
     ) { }
   showpinnedNotes:any
   hovered=false;
@@ -23,6 +24,12 @@ export class GetNotesComponent implements OnInit {
   Reminder="";
   ngOnInit(): void {
     this.getAllNote();
+    this.datasharing.currentMessage.subscribe((change)=>{
+      if(change == true){
+        this.getAllNote();
+        this.datasharing.changeMessage(false);
+      }
+    });
   }
   
    getAllNote(){
@@ -67,12 +74,13 @@ export class GetNotesComponent implements OnInit {
         console.log(result);
     });
   }
+
   openDialog(note:any)
   {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    this.dialog.open(UpdateNoteComponent,dialogConfig);
+    this.dialog.open(UpdateNoteComponent, {data: note});
   }
 }
 

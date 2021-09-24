@@ -54,5 +54,9 @@ export class GetTrashComponent implements OnInit {
           console.log(result);
       });
     }
+    emptyTrash()
+   {
+     this.noteService.EmptyTrash().subscribe();
+   }
 }
 

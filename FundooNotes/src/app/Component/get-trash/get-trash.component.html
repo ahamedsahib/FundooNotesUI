@@ -1,3 +1,7 @@
+<div class="emptyTrash">
+    <h3 style="font-style:italic;">Notes in Trash are deleted after 7 days.</h3>
+    <button mat-button color="primary" style="margin-top:-15px;margin-left:15px;" (click)="emptyTrash()">Empty Trash</button>
+</div>
 <div class="Notes">
     <p [style.display]>{{showpinnedNotes ? 'PINNED' : ''}}</p>
     <div class="notewrap">

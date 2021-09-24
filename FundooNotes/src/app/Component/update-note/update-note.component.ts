@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NoteServiceService } from 'src/app/Service/NoteService/note-service.service';
 
 @Component({
   selector: 'app-update-note',
@@ -15,9 +17,11 @@ export class UpdateNoteComponent implements OnInit {
  isReminder=false;
  Reminder="";
  isClose=true;
- NoteForm !:FormGroup
+ NoteForm !: FormGroup
 
- constructor(private snackBar:MatSnackBar) { }
+ constructor(private snackBar:MatSnackBar,@Inject(MAT_DIALOG_DATA) public data:any,private noteService:NoteServiceService, public dialogRef: MatDialogRef<UpdateNoteComponent>) {
+   this.isReminder=data.reminder!=null?true:false 
+  }
 
   ngOnInit(): void {
     this.NoteForm = new FormGroup({
@@ -42,6 +46,11 @@ export class UpdateNoteComponent implements OnInit {
       verticalPosition: 'bottom',
       horizontalPosition: 'left'
     });  
+  }
+  Close(note:any) 
+  {
+    this.noteService.UpdateNote(note).subscribe();
+    this.dialogRef.close();
   }
 }
 

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataserviceService } from 'src/app/Service/Datasharing/dataservice.service';
 import { NoteServiceService } from 'src/app/Service/NoteService/note-service.service';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
 import { GetNotesComponent } from '../get-notes/get-notes.component';
@@ -15,7 +16,7 @@ export class NoteiconComponent implements OnInit {
   archive=false;
   hide=true;
   Reminder:any
-  constructor(private getnote:GetNotesComponent,private noteService:NoteServiceService,private snackBar:MatSnackBar,public dialog: MatDialog) { }
+  constructor(private getnote:GetNotesComponent,private noteService:NoteServiceService,private snackBar:MatSnackBar,public dialog: MatDialog,private datasharing:DataserviceService) { }
   
   @Input() note:any;
 
@@ -106,12 +107,14 @@ archiveNote()
         (result: any) => {
           this.snackBar.open(`${result.message}`, '', {duration: 3000 ,verticalPosition: 'bottom', horizontalPosition: 'left' })      
       });
+      this.datasharing.changeMessage(true);
   }
 DeleteNote(){
   this.noteService.ToTrash(this.note.noteId).subscribe(
     (result: any) => {
       console.log(result);
   });
+  this.datasharing.changeMessage(true);
 }
   addReminder(rem:any)
   {
@@ -121,6 +124,7 @@ DeleteNote(){
       (result: any) => {
         console.log(result);
     });
+    this.datasharing.changeMessage(true);
   }
 
   ChangeColor(color:any)
@@ -129,9 +133,10 @@ DeleteNote(){
       (result: any) => {
         console.log(result);
     });
+    this.datasharing.changeMessage(true);
   }
 
-  openDialog() 
+  openDialog( ) 
   {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

@@ -72,4 +72,11 @@
    word-wrap: break-word;
    white-space: pre-wrap;
   }
-
+  .emptyTrash
+  {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      margin-left: 190px;
+      margin-top: 15px;
+  }
