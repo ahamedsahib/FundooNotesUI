@@ -1,28 +1,40 @@
-.Notes{
-     margin-left: 40px;
+.getAllNotes{
+     margin-left: 5px; 
+     border-radius: 10px;
 }
-.getAllNotes
- {
-     display: flex;
-     flex-flow: row wrap;
-     justify-content: space-between;
-     margin-right: 25px;
+.notewrap{
+    display: flex;
+    flex-flow:row wrap ; 
+    margin-top: -10px
+}
+::ng-deep.Notes{
+    display: flex;
+    flex-flow: column wrap; 
+     margin-left: 80px;
+     margin-right: 10px;
      margin-top: 50px;
+     p{
+        color: #5f6368;
+        letter-spacing: .07272727em;
+        font-family: Roboto,Arial,sans-serif;
+        font-size: .6875rem;
+        font-weight: 500;
+        line-height: 1rem;
+    }
  }
 ::ng-deep .getNoteCard
 {
     display: flex;
     flex-direction: column;
-    width:220px;
+    width:200px;
     align-items: center;
-    border-radius: 16px;
     margin-top: 25px;
     margin-left: 3px;
-   
+    padding-bottom:0 !important ;
     border: 1px solid #E0E0E0 ;
 }
 
-.card_title
+::ng-deep.card_title
 {
     display: flex;
     flex-direction: row;
@@ -55,3 +67,11 @@
 {
     cursor: pointer;
 }
+
+::ng-deep.noteDescription
+  { 
+    overflow: hidden !important;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+   }
+

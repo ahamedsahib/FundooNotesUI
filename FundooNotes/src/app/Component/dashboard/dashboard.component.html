@@ -22,47 +22,57 @@
         <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon>supervised_user_circle</mat-icon>
         </button>
-        <mat-menu #menu="matMenu" style="padding-top: 20px;">
+        <mat-menu #menu="matMenu">
+            <div class="userProfile">
             <img src="../../../assets/denis-harschi-umj2W38UOmc-unsplash.jpg" class="profilePic">
-            <h1 style="font-size: 14px;">Ahamed Sahib</h1>
-            <p style="font-size: 14px;">adsahib39@gmailcom</p>
-            <mat-divider style="margin-top: 20px;"></mat-divider>
-            <button mat-stroked-button style="margin:10px 0;width: 50px;">Sign out</button>
-            <mat-divider></mat-divider>
+            <h1 style="font-size: 14px;">{{Userdetails.firstName}} {{Userdetails.lastName}}</h1>
+            <p style="font-size: 14px;">{{Userdetails.email}}</p>
+            <mat-divider style="margin: 10px;"></mat-divider>
+            <button mat-stroked-button style="width: fit-content; margin-bottom: 4px;" click="signout()">Sign out</button>
+            <mat-divider a></mat-divider>
+        </div>
         </mat-menu>
     </div>
 </mat-toolbar>
 <mat-sidenav-container class="main">
     <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="side_nav" (mouseover)="opened=true">
         <mat-nav-list>
-            <mat-list-item>
+            <mat-list-item (click)="getnotes='Notes'">
                 <mat-icon mat-list-icon class="sidenavLogo">lightbulb_outline</mat-icon>
                 <h4 mat-line>Notes</h4>
             </mat-list-item>
-            <mat-list-item>
+            <mat-list-item (click)="getnotes='Reminders'">
                 <mat-icon mat-list-icon class="sidenavLogo">notifications_none</mat-icon>
                 <h4 mat-line>Reminders</h4>
+            </mat-list-item>
+            <mat-list-item *ngFor="let label of labels;" (click)="getnotes='Label'; noteLabel=label">
+                <mat-icon mat-list-icon >label_outline</mat-icon>
+                <h4 mat-line>{{label}}</h4>
             </mat-list-item>
             <mat-list-item>
                 <mat-icon mat-list-icon class="sidenavLogo material-icons-outlined">edit_outline</mat-icon>
                 <h4 mat-line>Edit labels</h4>
             </mat-list-item>
-            <mat-list-item>
+            <mat-list-item (click)="getnotes='Archive'">
                 <mat-icon mat-list-icon class="sidenavLogo material-icons-outlined">archive</mat-icon>
                 <h4 mat-line>Archive</h4>
             </mat-list-item>
-            <mat-list-item>
+            <mat-list-item (click)="getnotes='Trash'">
                 <mat-icon mat-list-icon class="sidenavLogo material-icons-outlined">delete</mat-icon>
                 <h4 mat-line>Trash</h4>
             </mat-list-item>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div class="maincontent">
+        <div class="maincontent"  *ngIf="getnotes=='Notes' || getnotes=='Reminders'">
             <app-add-note></app-add-note>
         </div>
         <div class="notes">
-            <app-get-notes></app-get-notes>
+            <app-get-notes *ngIf="getnotes=='Notes'"></app-get-notes>
+            <app-get-archive-notes *ngIf="getnotes=='Archive'"></app-get-archive-notes>
+            <app-get-reminder *ngIf="getnotes=='Reminders'"></app-get-reminder>
+            <app-get-trash *ngIf="getnotes=='Trash'"></app-get-trash>
+            <app-get-label-notes *ngIf="getnotes=='Label'" [labels]="noteLabel"></app-get-label-notes>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

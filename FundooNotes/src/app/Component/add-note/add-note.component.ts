@@ -5,11 +5,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({ 
   providedIn: 'root' 
 })
+
 @Component({
   selector: 'app-add-note',
   templateUrl: './add-note.component.html',
   styleUrls: ['./add-note.component.scss']
 })
+
 export class AddNoteComponent implements OnInit {
  hide=true;
  noteColor = "#fff";

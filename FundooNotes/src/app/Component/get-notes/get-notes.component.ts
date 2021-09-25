@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { json } from 'express';
+import { DataserviceService } from 'src/app/Service/Datasharing/dataservice.service';
 import { NoteServiceService } from 'src/app/Service/NoteService/note-service.service';
-
+import { UpdateNoteComponent } from '../update-note/update-note.component';
+@Injectable({ 
+  providedIn: 'root' 
+})
 @Component({
   selector: 'app-get-notes',
   templateUrl: './get-notes.component.html',
@@ -9,27 +15,43 @@ import { NoteServiceService } from 'src/app/Service/NoteService/note-service.ser
 })
 export class GetNotesComponent implements OnInit {
   notes: any 
-  constructor(private snackBar:MatSnackBar,private noteService:NoteServiceService) { }
-
+  constructor(private snackBar:MatSnackBar,private noteService:NoteServiceService,public dialog: MatDialog,private datasharing:DataserviceService
+    ) { }
+  showpinnedNotes:any
   hovered=false;
   noteColor= "#fff";
   pinned = false;
   isReminder=false;
   Reminder="";
+  
   ngOnInit(): void {
     this.getAllNote();
+   
+    this.datasharing.currentMessage.subscribe((change)=>{
+      if(change == true){
+        this.getAllNote();
+        this.datasharing.changeMessage(false);
+      }
+    });
   }
-
-  getAllNote(){
+   getAllNote(){
       this.noteService.getNote()
         .subscribe((result:any)=>{
-          console.log(result);
           this.notes=result.data;
+          console.log(this.notes);
+          
           this.snackBar.open(`${result.message}`, '', {
             duration: 3000,
             verticalPosition: 'bottom',
             horizontalPosition: 'left'
           });
+          for (let note of this.notes) {
+            if(note.pin==true)
+            {
+              this.showpinnedNotes=true;
+              break;
+            }
+          }
         },
         error => {  
           this.snackBar.open(`${error.error.message}`, '', {
@@ -40,24 +62,27 @@ export class GetNotesComponent implements OnInit {
       });
     }
     
-  pinNote()
+  pinNote(note:any)
   {
-    this.snackBar.open(`${this.pinned?'Note unpinned':'Note Pinned'}`, '', {
-        duration: 2000,
-        verticalPosition: 'bottom',
-        horizontalPosition: 'left'
-      });
-      this.pinned=!this.pinned;
-    
-  }
-  RemoveReminder()
-  {
-    this.isReminder = false;
-    this.snackBar.open('Reminder Deleted', '', {
-      duration: 2000,
-      verticalPosition: 'bottom',
-      horizontalPosition: 'left'
+    this.noteService.Pin(note.noteId).subscribe(
+      (result: any) => {
+        console.log(result);
     });
+  }
+  RemoveReminder(note:any)
+  {
+    this.noteService.UnsetReminder(note.noteId).subscribe(
+      (result: any) => {
+        console.log(result);
+    });
+  }
+
+  openDialog(note:any)
+  {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(UpdateNoteComponent, {data: note});
   }
 }
 
