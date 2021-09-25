@@ -37,6 +37,7 @@ import { GetArchiveNotesComponent } from './Component/get-archive-notes/get-arch
 import { GetReminderComponent } from './Component/get-reminder/get-reminder.component';
 import { GetTrashComponent } from './Component/get-trash/get-trash.component';
 import { UpdateNoteComponent } from './Component/update-note/update-note.component';
+import { GetLabelNotesComponent } from './Component/get-label-notes/get-label-notes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { UpdateNoteComponent } from './Component/update-note/update-note.compone
     GetArchiveNotesComponent,
     GetReminderComponent,
     GetTrashComponent,
-    UpdateNoteComponent
+    UpdateNoteComponent,
+    GetLabelNotesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

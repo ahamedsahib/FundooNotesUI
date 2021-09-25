@@ -104,9 +104,10 @@ export class NoteiconComponent implements OnInit {
   {
     this.noteService.Archive(this.note.noteId).subscribe(
         (result: any) => {
-          this.snackBar.open(`${result.message}`, '', {duration: 3000 ,verticalPosition: 'bottom', horizontalPosition: 'left' })      
+          this.snackBar.open(`${result.message}`, '', {duration: 3000 ,verticalPosition: 'bottom', horizontalPosition: 'left' }) 
+          this.datasharing.changeMessage(true);     
       });
-    this.datasharing.changeMessage(true);
+    
   }
 
   DeleteNote()
@@ -115,8 +116,9 @@ export class NoteiconComponent implements OnInit {
     (result: any) => 
     {
       console.log(result);
+      this.datasharing.changeMessage(true);
   });
-  this.datasharing.changeMessage(true);
+  
 }
   addReminder(rem:any)
   {
@@ -125,8 +127,9 @@ export class NoteiconComponent implements OnInit {
     this.noteService.AddReminder(this.note.noteId,this.Reminder).subscribe(
       (result: any) => {
         console.log(result);
+        this.datasharing.changeMessage(true);
     });
-    this.datasharing.changeMessage(true);
+    
   }
 
   ChangeColor(color:any)
@@ -134,8 +137,9 @@ export class NoteiconComponent implements OnInit {
     this.noteService.ChangeNoteColor(this.note.noteId,color).subscribe(
       (result: any) => {
         console.log(result);
+        this.datasharing.changeMessage(true);
     });
-    this.datasharing.changeMessage(true);
+    
   }
 
   openDialog() 

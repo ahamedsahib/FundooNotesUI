@@ -10,7 +10,6 @@ export class HttpServiceService {
 
   post(url:string ,data:any=null,isHeaderRequired:any=false,headers:any=false)
   {
-    console.log(url,data);
     return this.http.post(url,data,isHeaderRequired && headers)
   }
   put(url:string ,data:any=null,isHeaderRequired:any=false,headers:any=null)

@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   labels:any
   Userdetails:any
   getnotes='Notes';
+  noteLabel:any
   toggleView()
   {
     this.list = !this.list;

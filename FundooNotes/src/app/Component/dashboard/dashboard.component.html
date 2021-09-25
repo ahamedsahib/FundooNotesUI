@@ -45,7 +45,7 @@
                 <mat-icon mat-list-icon class="sidenavLogo">notifications_none</mat-icon>
                 <h4 mat-line>Reminders</h4>
             </mat-list-item>
-            <mat-list-item *ngFor="let label of labels;" (click)="getnotes='label'">
+            <mat-list-item *ngFor="let label of labels;" (click)="getnotes='Label'; noteLabel=label">
                 <mat-icon mat-list-icon >label_outline</mat-icon>
                 <h4 mat-line>{{label}}</h4>
             </mat-list-item>
@@ -72,6 +72,7 @@
             <app-get-archive-notes *ngIf="getnotes=='Archive'"></app-get-archive-notes>
             <app-get-reminder *ngIf="getnotes=='Reminders'"></app-get-reminder>
             <app-get-trash *ngIf="getnotes=='Trash'"></app-get-trash>
+            <app-get-label-notes *ngIf="getnotes=='Label'" [labels]="noteLabel"></app-get-label-notes>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

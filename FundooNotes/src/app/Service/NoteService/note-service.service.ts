@@ -74,6 +74,7 @@ export class NoteServiceService {
   }
   UpdateNote(data:any)
   {
+    console.log(data);
     return this.httpService.put(`${environment.baseUrl}/api/Note`,data,true,this.headers);
   }
   EmptyTrash()
@@ -94,5 +95,13 @@ export class NoteServiceService {
   {
     let params = new HttpParams().set('collaboratorId',cId).set('noteId',nId);
     return this.httpService.delete(`${environment.baseUrl}/api/Collaborator`,params,true,this.headers);
+  }
+  getLabelNote(id:any){
+    var userid = this.userDetails.userId;
+    const params={
+      LabelId : id,
+      UserId : userid
+    }
+    return this.httpService.get(`${environment.baseUrl}/api/LabelsNote`,true,this.headers);
   }
 }
