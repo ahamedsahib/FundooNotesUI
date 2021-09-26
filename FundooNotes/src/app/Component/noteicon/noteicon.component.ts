@@ -12,15 +12,24 @@ import { GetNotesComponent } from '../get-notes/get-notes.component';
   styleUrls: ['./noteicon.component.scss']
 })
 export class NoteiconComponent implements OnInit {
-  
+  isArchive:any
   archive=false;
   hide=true;
-  Reminder:any
+  Reminder:any;
+  image:any;
+  file:any
   constructor(private getnote:GetNotesComponent,private noteService:NoteServiceService,private snackBar:MatSnackBar,public dialog: MatDialog,private datasharing:DataserviceService) { }
   
   @Input() note:any;
 
   ngOnInit(): void {
+    if(this.note.archive==true)
+    {
+      this.isArchive = "unarchive";
+    }
+    else{
+      this.isArchive = "archive";
+    }
   }
 
   colors: any[] = [
@@ -150,4 +159,19 @@ export class NoteiconComponent implements OnInit {
 
     this.dialog.open(CollaboratorComponent,{data: this.note} );
   }
-}
+  onFileChanged(event: any)
+  {
+    var files: File=event.target.files.item(0);
+      console.log(event.target.files.item(0));
+      const form = new FormData();
+      form.append('imagePath',files,files.name);
+      console.log(form)
+      console.log(this.note.noteId);
+      this.noteService.addImage(this.note.noteId,form).
+      subscribe((result:any)=>{
+        this.datasharing.changeMessage(true);
+        console.log(result);
+      });
+    }
+  }
+

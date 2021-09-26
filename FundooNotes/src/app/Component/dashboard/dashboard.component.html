@@ -5,7 +5,7 @@
         </button>
         <img src="../../../assets/fundooIcon.png" class="image">
         <mat-card-title style="margin-left: 5px; padding-top:14px;">
-            <span style="color: #5F6368;font-weight:normal;;">Fundoo</span>
+            <span style="color: #5F6368;font-weight:normal;;">{{getnotes}}</span>
         </mat-card-title>
     </div>
     <div class="search">
@@ -37,7 +37,7 @@
 <mat-sidenav-container class="main">
     <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="side_nav" (mouseover)="opened=true">
         <mat-nav-list>
-            <mat-list-item (click)="getnotes='Notes'">
+            <mat-list-item (click)="getnotes='Fundoo'">
                 <mat-icon mat-list-icon class="sidenavLogo">lightbulb_outline</mat-icon>
                 <h4 mat-line>Notes</h4>
             </mat-list-item>
@@ -64,11 +64,11 @@
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div class="maincontent"  *ngIf="getnotes=='Notes' || getnotes=='Reminders'">
+        <div class="maincontent"  *ngIf="getnotes=='Notes' || getnotes=='Reminders' || getnotes=='Label'">
             <app-add-note></app-add-note>
         </div>
         <div class="notes">
-            <app-get-notes *ngIf="getnotes=='Notes'"></app-get-notes>
+            <app-get-notes *ngIf="getnotes=='Fundoo'"></app-get-notes>
             <app-get-archive-notes *ngIf="getnotes=='Archive'"></app-get-archive-notes>
             <app-get-reminder *ngIf="getnotes=='Reminders'"></app-get-reminder>
             <app-get-trash *ngIf="getnotes=='Trash'"></app-get-trash>

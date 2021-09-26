@@ -24,7 +24,8 @@
 }
 ::ng-deep .getNoteCard
 {
-   width:200px;
+    width:220px;
+    border-radius: 10px !important;
    align-items: center;
    margin-top: 25px;
    margin-left: 3px;
@@ -72,4 +73,6 @@
    word-wrap: break-word;
    white-space: pre-wrap;
   }
-
+  .card{
+    padding: 12px !important;
+}

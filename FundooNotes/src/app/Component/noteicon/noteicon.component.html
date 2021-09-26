@@ -1,7 +1,7 @@
 <div class="icon">
     <div class="icons">
         <button mat-icon-button class="example-icon favorite-icon">
-            <mat-icon mat-list-icon class="material-icons-outlined" [matMenuTriggerFor]="reminderMenu">add_alert
+            <mat-icon mat-list-icon class="material-icons-outlined iconic" [matMenuTriggerFor]="reminderMenu">add_alert
             </mat-icon>
             <mat-menu #reminderMenu="matMenu" class="reminderBox">
                 <button mat-menu-item [disabled]="true">Reminder</button>
@@ -11,21 +11,22 @@
             </mat-menu>
         </button>
         <button mat-icon-button class="example-icon favorite-icon">
-            <mat-icon mat-list-icon class="material-icons-outlined" (click)="openDialog()">person_add</mat-icon>
+            <mat-icon mat-list-icon class="material-icons-outlined iconic" (click)="openDialog()">person_add</mat-icon>
         </button>
         <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="colorPallete">
-            <mat-icon mat-list-icon class="material-icons-outlined" >color_lens
+            <mat-icon mat-list-icon class="material-icons-outlined iconic " >color_lens
             </mat-icon>
         </button>
-        <button mat-icon-button class="example-icon favorite-icon">
-            <mat-icon mat-list-icon class="material-icons-outlined">image</mat-icon>
-        </button>
-        <button mat-icon-button class="example-icon favorite-icon" (click)="archiveNote()">
-            <mat-icon mat-list-icon class="material-icons-outlined" *ngIf="!archive">archive</mat-icon>
-            <mat-icon mat-list-icon style="color:#767676 ;" *ngIf="archive">archive</mat-icon>
+        <label for="image" style="margin-top: 10px;margin-left: 7px; width: 30px; cursor: pointer;">
+            <input type="file" name="imagePath" accept="image/*" id="image" style="display:none;"
+                (change)="onFileChanged($event)" />
+                <mat-icon mat-list-icon class="material-icons-outlined iconic">image</mat-icon>
+        </label>
+        <button mat-icon-button class="example-icon favorite-icon" matTooltip="{{isArchive}}" (click)="archiveNote()">
+            <mat-icon mat-list-icon class="material-icons-outlined iconic">archive</mat-icon>
         </button>
         <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="Moremenu">
-            <mat-icon mat-list-icon class="material-icons-outlined">more_vert</mat-icon>
+            <mat-icon mat-list-icon class="material-icons-outlined iconic">more_vert</mat-icon>
             <mat-menu #Moremenu="matMenu" class="moreOption">
                 <button mat-menu-item>add Label</button>
                 <button mat-menu-item (click)="DeleteNote()">Delete Note</button>

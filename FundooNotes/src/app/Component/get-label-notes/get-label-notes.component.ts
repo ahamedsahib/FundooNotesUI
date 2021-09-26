@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataserviceService } from 'src/app/Service/Datasharing/dataservice.service';
 import { NoteServiceService } from 'src/app/Service/NoteService/note-service.service';
 
 @Component({
@@ -19,18 +20,18 @@ export class GetLabelNotesComponent implements OnInit {
   isReminder=false;
   Reminder="";
 
-  constructor(private snackBar:MatSnackBar,private noteService:NoteServiceService) { }
+  constructor(private snackBar:MatSnackBar,private noteService:NoteServiceService,private datasharing:DataserviceService) { }
   
   ngOnInit(): void {
     this.getAllNote();
   }
   
    getAllNote(){
-      this.noteService.getLabelNote(this.labels.labelId)
+      this.noteService.getLabelNote(this.labels)
         .subscribe((result:any)=>{
           this.notes=result.data;
           console.log(this.notes);
-          
+          this.datasharing.changeMessage(true);
           this.snackBar.open(`${result.message}`, '', {
             duration: 3000,
             verticalPosition: 'bottom',

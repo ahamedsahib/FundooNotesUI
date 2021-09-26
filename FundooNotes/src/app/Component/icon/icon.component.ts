@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataserviceService } from 'src/app/Service/Datasharing/dataservice.service';
 import { NoteServiceService } from 'src/app/Service/NoteService/note-service.service';
 import { AddNoteComponent } from '../add-note/add-note.component';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
@@ -13,7 +14,7 @@ import { CollaboratorComponent } from '../collaborator/collaborator.component';
 export class IconComponent implements OnInit {
 archive=false;
 hide=true;
-  constructor(private addNote:AddNoteComponent,private noteService:NoteServiceService,private snackBar:MatSnackBar,public dialog: MatDialog) { }
+  constructor(private addNote:AddNoteComponent,private noteService:NoteServiceService,private datasharing:DataserviceService,private snackBar:MatSnackBar,public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -118,6 +119,7 @@ saveNote(){
         this.archive=false;
         this.addNote.Reminder="";
         this.addNote.pinned = false;
+        this.datasharing.changeMessage(true);
     },
     error => {  
       this.snackBar.open(`${error.error.message}`, '', {

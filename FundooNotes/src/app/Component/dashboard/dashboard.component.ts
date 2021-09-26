@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   list: boolean = true;
   labels:any
   Userdetails:any
-  getnotes='Notes';
+  getnotes='Fundoo';
   noteLabel:any
   toggleView()
   {

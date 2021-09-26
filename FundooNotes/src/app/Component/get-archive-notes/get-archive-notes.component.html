@@ -1,11 +1,11 @@
 <div class="Notes">
-    <p [style.display]>{{showpinnedNotes ? 'PINNED' : ''}}</p>
+    <p>{{showpinnedNotes ? 'PINNED' : ''}}</p>
     <div class="notewrap">
         <div *ngFor="let note of notes;let i=index">
             <div class="getAllNotes" *ngIf="note.pin"  >
                 <mat-card (mouseenter)="hovered=true" (mouseleave)="hovered=false" class="getNoteCard"
                     [style.background-color]="note.colour" >
-                    <div>
+                    <div class="card">
                         <mat-card-title>
                             <div class="card_title">
                                 <div id="noteTitle" class="noteTitle">
@@ -49,14 +49,13 @@
             <div class="getAllNotes" *ngIf="!note.pin">
                 <mat-card (mouseenter)="hovered=true" (mouseleave)="hovered=false" class="getNoteCard"
                     [style.background-color]="note.color">
-                    <div>
+                    <div class="card"> 
                         <mat-card-title>
                             <div class="card_title">
                                 <div id="noteTitle" class="noteTitle">
                                     <h2>{{note.title}}</h2>
                                 </div>
                                 <button mat-icon-button class="example-icon favorite-icon" (click)="pinNote()">
-
                                     <mat-icon mat-list-icon class="material-icons-outlined" style="color:#212121 ;"
                                         *ngIf="!note.pin">
                                         push_pin</mat-icon>

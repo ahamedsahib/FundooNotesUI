@@ -80,7 +80,8 @@ export class NoteServiceService {
   EmptyTrash()
   {
     var userid = this.userDetails.userId;
-    return this.httpService.delete(`${environment.baseUrl}/api/emptyTrash?userId=${userid}`,true,this.headers);
+    console.log(userid);
+    return this.httpService.delete(`${environment.baseUrl}/api/EmptyTrash?userId=${userid}`,true,this.headers);
   }  
   AddCollaborator(data:any)
   {
@@ -94,14 +95,18 @@ export class NoteServiceService {
   RemoveCollaborator(cId:any,nId:any)
   {
     let params = new HttpParams().set('collaboratorId',cId).set('noteId',nId);
-    return this.httpService.delete(`${environment.baseUrl}/api/Collaborator`,params,true,this.headers);
+    return this.httpService.delete(`${environment.baseUrl}/api/RemoveCollaborator?noteId=${nId}&collaboratorId=${cId}`,true,this.headers);
   }
-  getLabelNote(id:any){
+  getLabelNote(labelname:any){
     var userid = this.userDetails.userId;
     const params={
-      LabelId : id,
+      LabelName : labelname,
       UserId : userid
     }
-    return this.httpService.get(`${environment.baseUrl}/api/LabelsNote`,true,this.headers);
+    return this.httpService.post(`${environment.baseUrl}/api/LabelsNote`,params,true,this.headers);
+  }
+  addImage(noteId:any,file:any){
+    console.log(noteId+"noteId");
+    return this.httpService.put(`${environment.baseUrl}/api/addImage?noteId=${noteId}`,file,true,this.headers);
   }
 }

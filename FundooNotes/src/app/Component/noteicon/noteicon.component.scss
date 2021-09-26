@@ -1,6 +1,7 @@
 .icon{
         display: flex;
         justify-content: space-between;
+        margin-top: 5px;
     }
     .icons{
         display: flex;
@@ -50,4 +51,7 @@ button.mat-menu-item {
 {
     cursor: pointer;
     border: 1px solid black;
+}
+.iconic{
+    font-size: 22px !important;
 }

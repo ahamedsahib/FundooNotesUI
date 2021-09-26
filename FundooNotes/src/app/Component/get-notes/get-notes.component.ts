@@ -67,6 +67,7 @@ export class GetNotesComponent implements OnInit {
     this.noteService.Pin(note.noteId).subscribe(
       (result: any) => {
         console.log(result);
+        this.datasharing.changeMessage(true);
     });
   }
   RemoveReminder(note:any)
@@ -74,6 +75,7 @@ export class GetNotesComponent implements OnInit {
     this.noteService.UnsetReminder(note.noteId).subscribe(
       (result: any) => {
         console.log(result);
+        this.datasharing.changeMessage(true);
     });
   }
 
